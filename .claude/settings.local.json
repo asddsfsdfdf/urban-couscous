@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": ["Bash(code .)"],
+    "deny": []
+  },
+  "model": "claude-opus-4-20250514"
+}

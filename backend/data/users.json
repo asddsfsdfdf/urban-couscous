@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "_id": "1749930548092",
+      "email": "lucastrusi05@gmail.com",
+      "password": "$2a$10$bvJPk3YbDvFSSNNQplbDG.YNUt167fZ3/3apvy/EiiPq/U2e1xKje",
+      "subscription": {
+        "status": "trialing",
+        "plan": "monthly",
+        "stripeCustomerId": "cus_SV04Y6velzef8n",
+        "stripeSubscriptionId": "sub_1Ra04TRsDoYbARrN4SPltnQO",
+        "trialEnd": "2025-06-17T19:49:08.091Z"
+      },
+      "analysisCount": 0,
+      "createdAt": "2025-06-14T19:49:08.093Z"
+    }
+  ]
+}
