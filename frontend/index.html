@@ -38,6 +38,7 @@
                 <a href="#features" class="nav-link">Features</a>
                 <a href="#demo" class="nav-link">Demo</a>
                 <a href="#pricing" class="nav-link">Pricing</a>
+                <a href="/register" class="nav-link" style="color: var(--primary-blue); font-weight: 600;">Try ChartMaster free for 7 days</a>
                 <a href="/login" class="nav-link-login">Sign In</a>
                 <a href="/register" class="nav-cta">Start Free Trial</a>
             </div>
@@ -92,6 +93,75 @@
                         </svg>
                         <span>Watch Demo</span>
                     </button>
+                </div>
+                
+                <!-- Direct Chart Upload -->
+                <div class="hero-upload-area" id="heroUploadArea" onclick="document.getElementById('heroChartInput').click()">
+                    <input type="file" id="heroChartInput" accept="image/*" style="display: none;" onchange="handleHeroChartUpload(event)">
+                    <div class="upload-icon-hero">📊</div>
+                    <div class="upload-text-hero">Drop your chart here for instant analysis</div>
+                    <div class="upload-subtext-hero">or click to browse your files</div>
+                    <div class="upload-formats-hero">
+                        <span class="format-badge">PNG</span>
+                        <span class="format-badge">JPG</span>
+                        <span class="format-badge">TradingView</span>
+                    </div>
+                </div>
+                
+                <!-- Analysis Results (hidden initially) -->
+                <div class="hero-analysis-results" id="heroAnalysisResults" style="display: none;">
+                    <div class="analysis-header-hero">
+                        <div class="sentiment-display-hero">
+                            <div class="sentiment-icon-hero">📈</div>
+                            <div>
+                                <div class="sentiment-text-hero">BULLISH</div>
+                                <div class="confidence-hero">89% Confidence</div>
+                            </div>
+                        </div>
+                        <button class="new-analysis-btn-hero" onclick="resetHeroAnalysis()">New Analysis</button>
+                    </div>
+                    
+                    <div class="analysis-grid-hero">
+                        <div class="analysis-card-hero">
+                            <h4>📊 Pattern Analysis</h4>
+                            <div class="metric-hero">
+                                <span class="metric-label-hero">Pattern:</span>
+                                <span class="metric-value-hero">Ascending Triangle</span>
+                            </div>
+                            <div class="metric-hero">
+                                <span class="metric-label-hero">Timeframe:</span>
+                                <span class="metric-value-hero">4H</span>
+                            </div>
+                        </div>
+                        
+                        <div class="analysis-card-hero">
+                            <h4>🎯 Price Levels</h4>
+                            <div class="metric-hero">
+                                <span class="metric-label-hero">Support:</span>
+                                <span class="metric-value-hero support">$64,200</span>
+                            </div>
+                            <div class="metric-hero">
+                                <span class="metric-label-hero">Target:</span>
+                                <span class="metric-value-hero target">$68,500</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-results-actions">
+                        <a href="/register" class="hero-action-btn primary">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            Get Full Professional Analysis
+                        </a>
+                        <a href="/register" class="hero-action-btn secondary">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                            </svg>
+                            Export PDF Report
+                        </a>
+                    </div>
                 </div>
                 
                 <div class="hero-stats">
@@ -161,6 +231,19 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust-section">
+        <div class="trust-content">
+            <div class="trust-badge">
+                <span>✨</span>
+                <span>Try ChartMaster free for 7 days</span>
+            </div>
+            <div class="trust-text">Trusted by +10,000 happy traders</div>
+            <div class="trust-stars">⭐⭐⭐⭐⭐</div>
+            <div class="trust-subtext">Join thousands of professional traders who rely on ChartMaster AI</div>
         </div>
     </section>
 

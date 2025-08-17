@@ -9,6 +9,7 @@ const maxDemoScans = 2;
 document.addEventListener('DOMContentLoaded', function() {
     initializeNavigation();
     initializeHeroDemo();
+    initializeHeroUpload();
     initializePricingToggle();
     initializeScrollEffects();
     initializeDemoFunctionality();
@@ -78,6 +79,140 @@ function initializeHeroDemo() {
             demoState = 0;
         }
     }, 4000);
+}
+
+// Hero upload functionality
+function initializeHeroUpload() {
+    const heroUploadArea = document.getElementById('heroUploadArea');
+    if (heroUploadArea) {
+        setupHeroDragAndDrop(heroUploadArea);
+    }
+}
+
+// Setup drag and drop for hero upload
+function setupHeroDragAndDrop(uploadArea) {
+    uploadArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        uploadArea.classList.add('drag-over');
+    });
+    
+    uploadArea.addEventListener('dragleave', () => {
+        uploadArea.classList.remove('drag-over');
+    });
+    
+    uploadArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        uploadArea.classList.remove('drag-over');
+        
+        const file = e.dataTransfer.files[0];
+        if (file && file.type.startsWith('image/')) {
+            handleHeroChartUpload({ target: { files: [file] } });
+        }
+    });
+}
+
+// Handle hero chart upload
+function handleHeroChartUpload(event) {
+    const file = event.target.files[0];
+    if (!file || !file.type.startsWith('image/')) {
+        showNotification('Please upload a valid image file', 'error');
+        return;
+    }
+    
+    // Hide upload area and show loading
+    const heroUploadArea = document.getElementById('heroUploadArea');
+    const heroAnalysisResults = document.getElementById('heroAnalysisResults');
+    
+    heroUploadArea.style.display = 'none';
+    
+    // Show loading state temporarily
+    heroAnalysisResults.innerHTML = `
+        <div style="text-align: center; padding: 40px;">
+            <div class="loading-spinner-container">
+                <div class="ai-brain-icon">🧠</div>
+                <div class="loading-spinner"></div>
+            </div>
+            <h3 class="loading-title">Analyzing Your Chart...</h3>
+            <p class="loading-message">Our AI is processing your chart patterns...</p>
+        </div>
+    `;
+    heroAnalysisResults.style.display = 'block';
+    
+    // Simulate analysis (3 seconds)
+    setTimeout(() => {
+        showHeroAnalysisResults();
+    }, 3000);
+}
+
+// Show hero analysis results
+function showHeroAnalysisResults() {
+    const heroAnalysisResults = document.getElementById('heroAnalysisResults');
+    
+    heroAnalysisResults.innerHTML = `
+        <div class="analysis-header-hero">
+            <div class="sentiment-display-hero">
+                <div class="sentiment-icon-hero">📈</div>
+                <div>
+                    <div class="sentiment-text-hero">BULLISH</div>
+                    <div class="confidence-hero">89% Confidence</div>
+                </div>
+            </div>
+            <button class="new-analysis-btn-hero" onclick="resetHeroAnalysis()">New Analysis</button>
+        </div>
+        
+        <div class="analysis-grid-hero">
+            <div class="analysis-card-hero">
+                <h4>📊 Pattern Analysis</h4>
+                <div class="metric-hero">
+                    <span class="metric-label-hero">Pattern:</span>
+                    <span class="metric-value-hero">Ascending Triangle</span>
+                </div>
+                <div class="metric-hero">
+                    <span class="metric-label-hero">Timeframe:</span>
+                    <span class="metric-value-hero">4H</span>
+                </div>
+            </div>
+            
+            <div class="analysis-card-hero">
+                <h4>🎯 Price Levels</h4>
+                <div class="metric-hero">
+                    <span class="metric-label-hero">Support:</span>
+                    <span class="metric-value-hero support">$64,200</span>
+                </div>
+                <div class="metric-hero">
+                    <span class="metric-label-hero">Target:</span>
+                    <span class="metric-value-hero target">$68,500</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="hero-results-actions">
+            <a href="/register" class="hero-action-btn primary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                Get Full Professional Analysis
+            </a>
+            <a href="/register" class="hero-action-btn secondary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                </svg>
+                Export PDF Report
+            </a>
+        </div>
+    `;
+}
+
+// Reset hero analysis
+function resetHeroAnalysis() {
+    const heroUploadArea = document.getElementById('heroUploadArea');
+    const heroAnalysisResults = document.getElementById('heroAnalysisResults');
+    const heroChartInput = document.getElementById('heroChartInput');
+    
+    heroAnalysisResults.style.display = 'none';
+    heroUploadArea.style.display = 'block';
+    heroChartInput.value = '';
 }
 
 // Pricing toggle functionality
