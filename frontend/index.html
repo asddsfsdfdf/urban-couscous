@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ChartMaster AI - Professional Chart Analysis</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/responsive.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -23,8 +21,9 @@
                             <path d="M7 14l4-4 4 4 4-4" stroke="url(#logoGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             <defs>
                                 <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#007AFF"/>
-                                    <stop offset="100%" stop-color="#5856D6"/>
+                                    <stop offset="0%" stop-color="#3B82F6"/>
+                                    <stop offset="50%" stop-color="#8B5CF6"/>
+                                    <stop offset="100%" stop-color="#EC4899"/>
                                 </linearGradient>
                             </defs>
                         </svg>
@@ -38,12 +37,18 @@
                 <a href="#features" class="nav-link">Features</a>
                 <a href="#demo" class="nav-link">Demo</a>
                 <a href="#pricing" class="nav-link">Pricing</a>
-                <a href="/register" class="nav-link" style="color: var(--primary-blue); font-weight: 600;">Try ChartMaster free for 7 days</a>
-                <a href="/login" class="nav-link-login">Sign In</a>
+                <a href="/register" class="nav-link trial-link">
+                    <span class="trial-badge">✨</span>
+                    Try ChartMaster free for 7 days
+                </a>
+            </div>
+            
+            <div class="nav-actions">
+                <a href="/login" class="nav-login">Sign In</a>
                 <a href="/register" class="nav-cta">Start Free Trial</a>
             </div>
             
-            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+            <button class="mobile-menu-toggle">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -55,24 +60,24 @@
     <section class="hero-section">
         <div class="hero-background">
             <div class="hero-gradient"></div>
-            <div class="hero-mesh"></div>
-            <div class="floating-elements">
-                <div class="float-element float-1"></div>
-                <div class="float-element float-2"></div>
-                <div class="float-element float-3"></div>
+            <div class="floating-orbs">
+                <div class="orb orb-1"></div>
+                <div class="orb orb-2"></div>
+                <div class="orb orb-3"></div>
+                <div class="orb orb-4"></div>
             </div>
         </div>
         
         <div class="hero-container">
             <div class="hero-content">
                 <div class="hero-badge">
-                    <span class="badge-icon">✨</span>
+                    <span class="badge-icon">🚀</span>
                     <span>Powered by Advanced AI</span>
                 </div>
                 
                 <h1 class="hero-title">
                     Professional Chart Analysis
-                    <span class="title-highlight">Powered by AI</span>
+                    <span class="title-gradient">Powered by AI</span>
                 </h1>
                 
                 <p class="hero-description">
@@ -96,71 +101,30 @@
                 </div>
                 
                 <!-- Direct Chart Upload -->
-                <div class="hero-upload-area" id="heroUploadArea" onclick="document.getElementById('heroChartInput').click()">
-                    <input type="file" id="heroChartInput" accept="image/*" style="display: none;" onchange="handleHeroChartUpload(event)">
-                    <div class="upload-icon-hero">📊</div>
-                    <div class="upload-text-hero">Drop your chart here for instant analysis</div>
-                    <div class="upload-subtext-hero">or click to browse your files</div>
-                    <div class="upload-formats-hero">
-                        <span class="format-badge">PNG</span>
-                        <span class="format-badge">JPG</span>
-                        <span class="format-badge">TradingView</span>
-                    </div>
-                </div>
-                
-                <!-- Analysis Results (hidden initially) -->
-                <div class="hero-analysis-results" id="heroAnalysisResults" style="display: none;">
-                    <div class="analysis-header-hero">
-                        <div class="sentiment-display-hero">
-                            <div class="sentiment-icon-hero">📈</div>
-                            <div>
-                                <div class="sentiment-text-hero">BULLISH</div>
-                                <div class="confidence-hero">89% Confidence</div>
+                <div class="hero-upload-container">
+                    <div class="hero-upload-area glass-card" id="heroUploadArea" onclick="document.getElementById('heroChartInput').click()">
+                        <input type="file" id="heroChartInput" accept="image/*" style="display: none;" onchange="handleHeroChartUpload(event)">
+                        <div class="upload-content">
+                            <div class="upload-icon">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                                    <polyline points="17 8 12 3 7 8"/>
+                                    <line x1="12" y1="3" x2="12" y2="15"/>
+                                </svg>
                             </div>
-                        </div>
-                        <button class="new-analysis-btn-hero" onclick="resetHeroAnalysis()">New Analysis</button>
-                    </div>
-                    
-                    <div class="analysis-grid-hero">
-                        <div class="analysis-card-hero">
-                            <h4>📊 Pattern Analysis</h4>
-                            <div class="metric-hero">
-                                <span class="metric-label-hero">Pattern:</span>
-                                <span class="metric-value-hero">Ascending Triangle</span>
-                            </div>
-                            <div class="metric-hero">
-                                <span class="metric-label-hero">Timeframe:</span>
-                                <span class="metric-value-hero">4H</span>
-                            </div>
-                        </div>
-                        
-                        <div class="analysis-card-hero">
-                            <h4>🎯 Price Levels</h4>
-                            <div class="metric-hero">
-                                <span class="metric-label-hero">Support:</span>
-                                <span class="metric-value-hero support">$64,200</span>
-                            </div>
-                            <div class="metric-hero">
-                                <span class="metric-label-hero">Target:</span>
-                                <span class="metric-value-hero target">$68,500</span>
+                            <h3>Drop your chart here for instant analysis</h3>
+                            <p>or click to browse your files</p>
+                            <div class="upload-formats">
+                                <span class="format-badge">PNG</span>
+                                <span class="format-badge">JPG</span>
+                                <span class="format-badge">TradingView</span>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="hero-results-actions">
-                        <a href="/register" class="hero-action-btn primary">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                            </svg>
-                            Get Full Professional Analysis
-                        </a>
-                        <a href="/register" class="hero-action-btn secondary">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                                <polyline points="14 2 14 8 20 8"/>
-                            </svg>
-                            Export PDF Report
-                        </a>
+                    <!-- Analysis Results (hidden initially) -->
+                    <div class="hero-analysis-results glass-card" id="heroAnalysisResults" style="display: none;">
+                        <!-- Results will be populated by JavaScript -->
                     </div>
                 </div>
                 
@@ -181,50 +145,41 @@
             </div>
             
             <div class="hero-visual">
-                <div class="demo-container-hero">
-                    <div class="demo-window">
-                        <div class="window-header">
-                            <div class="window-controls">
-                                <div class="control red"></div>
-                                <div class="control yellow"></div>
-                                <div class="control green"></div>
-                            </div>
-                            <div class="window-title">Chart Analysis</div>
+                <div class="demo-window glass-card">
+                    <div class="window-header">
+                        <div class="window-controls">
+                            <div class="control red"></div>
+                            <div class="control yellow"></div>
+                            <div class="control green"></div>
                         </div>
-                        <div class="window-content" id="demoContent">
-                            <div class="upload-state" id="uploadState">
-                                <div class="upload-icon-animated">
-                                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
-                                        <polyline points="17 8 12 3 7 8"/>
-                                        <line x1="12" y1="3" x2="12" y2="15"/>
-                                    </svg>
-                                </div>
-                                <h3>Drop Chart Here</h3>
-                                <p>AI analysis in seconds</p>
+                        <div class="window-title">Chart Analysis</div>
+                    </div>
+                    <div class="window-content" id="demoContent">
+                        <div class="demo-chart">
+                            <div class="chart-lines">
+                                <div class="chart-line line-1"></div>
+                                <div class="chart-line line-2"></div>
+                                <div class="chart-line line-3"></div>
                             </div>
-                            
-                            <div class="analysis-preview" id="analysisPreview" style="display: none;">
-                                <div class="analysis-header">
-                                    <div class="sentiment-indicator bullish">
-                                        <div class="sentiment-icon">📈</div>
-                                        <div class="sentiment-text">BULLISH</div>
-                                        <div class="confidence-score">87%</div>
-                                    </div>
+                            <div class="chart-points">
+                                <div class="chart-point point-1"></div>
+                                <div class="chart-point point-2"></div>
+                                <div class="chart-point point-3"></div>
+                            </div>
+                        </div>
+                        <div class="demo-analysis">
+                            <div class="analysis-badge bullish">
+                                <span class="badge-icon">📈</span>
+                                <span>BULLISH - 87% Confidence</span>
+                            </div>
+                            <div class="analysis-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">Pattern:</span>
+                                    <span class="detail-value">Ascending Triangle</span>
                                 </div>
-                                <div class="analysis-content">
-                                    <div class="insight-item">
-                                        <span class="insight-label">Pattern:</span>
-                                        <span class="insight-value">Ascending Triangle</span>
-                                    </div>
-                                    <div class="insight-item">
-                                        <span class="insight-label">Support:</span>
-                                        <span class="insight-value">$64,200</span>
-                                    </div>
-                                    <div class="insight-item">
-                                        <span class="insight-label">Target:</span>
-                                        <span class="insight-value">$68,500</span>
-                                    </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Target:</span>
+                                    <span class="detail-value">$68,500</span>
                                 </div>
                             </div>
                         </div>
@@ -236,14 +191,15 @@
 
     <!-- Trust Section -->
     <section class="trust-section">
-        <div class="trust-content">
-            <div class="trust-badge">
-                <span>✨</span>
-                <span>Try ChartMaster free for 7 days</span>
+        <div class="trust-container">
+            <div class="trust-badge glass-card">
+                <span class="trust-icon">✨</span>
+                <span class="trust-text">Trusted by +10,000 happy traders</span>
             </div>
-            <div class="trust-text">Trusted by +10,000 happy traders</div>
-            <div class="trust-stars">⭐⭐⭐⭐⭐</div>
-            <div class="trust-subtext">Join thousands of professional traders who rely on ChartMaster AI</div>
+            <div class="trust-rating">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <span class="rating-text">4.9/5 from 2,847 reviews</span>
+            </div>
         </div>
     </section>
 
@@ -389,53 +345,6 @@
                                     </div>
                                 </div>
                             </div>
-                            
-                            <div class="demo-loading" id="demoLoading" style="display: none;">
-                                <div class="loading-animation">
-                                    <div class="loading-spinner"></div>
-                                    <div class="loading-brain">🧠</div>
-                                </div>
-                                <h3>Analyzing Chart...</h3>
-                                <p id="loadingMessage">Detecting patterns...</p>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" id="progressFill"></div>
-                                </div>
-                            </div>
-                            
-                            <div class="demo-results" id="demoResults" style="display: none;">
-                                <div class="results-header">
-                                    <div class="sentiment-badge bullish">
-                                        <span class="sentiment-icon">📈</span>
-                                        <span class="sentiment-text">BULLISH</span>
-                                        <span class="confidence">87%</span>
-                                    </div>
-                                    <button class="new-analysis-btn" onclick="resetDemo()">New Analysis</button>
-                                </div>
-                                
-                                <div class="results-content">
-                                    <div class="result-item">
-                                        <span class="result-label">Pattern Detected:</span>
-                                        <span class="result-value">Ascending Triangle</span>
-                                    </div>
-                                    <div class="result-item">
-                                        <span class="result-label">Support Level:</span>
-                                        <span class="result-value">$64,200</span>
-                                    </div>
-                                    <div class="result-item">
-                                        <span class="result-label">Target Price:</span>
-                                        <span class="result-value">$68,500</span>
-                                    </div>
-                                    <div class="result-item">
-                                        <span class="result-label">Risk/Reward:</span>
-                                        <span class="result-value">1:3.2</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="results-actions">
-                                    <button class="result-action primary">Get Full Analysis</button>
-                                    <button class="result-action secondary">Export PDF</button>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -448,7 +357,7 @@
         <div class="section-container">
             <div class="section-header">
                 <h2 class="section-title">Choose Your Plan</h2>
-                <p class="section-subtitle">Start with a 3-day free trial, no credit card required</p>
+                <p class="section-subtitle">Start with a 7-day free trial, no credit card required</p>
             </div>
             
             <div class="pricing-toggle">
@@ -582,7 +491,7 @@
             </div>
             
             <div class="pricing-footer">
-                <p>All plans include a 3-day free trial. No credit card required.</p>
+                <p>All plans include a 7-day free trial. No credit card required.</p>
                 <div class="trust-indicators">
                     <div class="trust-item">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -614,6 +523,10 @@
     <section class="cta-section">
         <div class="cta-background">
             <div class="cta-gradient"></div>
+            <div class="cta-orbs">
+                <div class="cta-orb orb-1"></div>
+                <div class="cta-orb orb-2"></div>
+            </div>
         </div>
         <div class="section-container">
             <div class="cta-content">
@@ -632,7 +545,7 @@
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M9 12l2 2 4-4"/>
                     </svg>
-                    <span>No credit card required • 3-day free trial • Cancel anytime</span>
+                    <span>No credit card required • 7-day free trial • Cancel anytime</span>
                 </div>
             </div>
         </div>
@@ -650,8 +563,9 @@
                                 <path d="M7 14l4-4 4 4 4-4" stroke="url(#footerLogoGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 <defs>
                                     <linearGradient id="footerLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" stop-color="#007AFF"/>
-                                        <stop offset="100%" stop-color="#5856D6"/>
+                                        <stop offset="0%" stop-color="#3B82F6"/>
+                                        <stop offset="50%" stop-color="#8B5CF6"/>
+                                        <stop offset="100%" stop-color="#EC4899"/>
                                     </linearGradient>
                                 </defs>
                             </svg>

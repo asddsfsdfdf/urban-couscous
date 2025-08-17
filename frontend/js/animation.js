@@ -123,8 +123,8 @@ function handleStaggerAnimation(entries, observer) {
 // Parallax effects for hero section
 function initializeParallaxEffects() {
     const heroSection = document.querySelector('.hero-section');
-    const floatingElements = document.querySelectorAll('.float-element');
-    const heroMesh = document.querySelector('.hero-mesh');
+    const floatingOrbs = document.querySelectorAll('.orb');
+    const heroMesh = document.querySelector('.hero-gradient');
     
     if (!heroSection) return;
     
@@ -135,13 +135,13 @@ function initializeParallaxEffects() {
         const rate = scrolled * -0.5;
         const meshRate = scrolled * -0.3;
         
-        // Move floating elements
-        floatingElements.forEach((element, index) => {
+        // Move floating orbs
+        floatingOrbs.forEach((orb, index) => {
             const speed = 0.2 + (index * 0.1);
-            element.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.1}deg)`;
+            orb.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.1}deg)`;
         });
         
-        // Move hero mesh
+        // Move hero gradient
         if (heroMesh) {
             heroMesh.style.transform = `translateY(${meshRate}px)`;
         }
@@ -228,19 +228,16 @@ function animateCounter(element) {
 
 // Floating elements animation
 function initializeFloatingElements() {
-    const floatingElements = document.querySelectorAll('.float-element');
+    const floatingOrbs = document.querySelectorAll('.orb');
     
-    floatingElements.forEach((element, index) => {
+    floatingOrbs.forEach((orb, index) => {
         // Set initial random position
         const randomX = Math.random() * 100;
         const randomY = Math.random() * 100;
         
-        element.style.left = `${randomX}%`;
-        element.style.top = `${randomY}%`;
-        
         // Add floating animation with different delays
-        element.style.animationDelay = `${index * 2}s`;
-        element.style.animationDuration = `${15 + index * 3}s`;
+        orb.style.animationDelay = `${index * 2}s`;
+        orb.style.animationDuration = `${15 + index * 3}s`;
     });
 }
 
@@ -377,7 +374,7 @@ function createParticle(container) {
         position: absolute;
         width: ${size}px;
         height: ${size}px;
-        background: radial-gradient(circle, rgba(0, 122, 255, 0.3) 0%, transparent 70%);
+        background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%);
         border-radius: 50%;
         left: ${x}px;
         top: ${y}px;
@@ -470,7 +467,7 @@ const animationStyles = `
         left: 50%;
         width: 80px;
         height: 80px;
-        background: radial-gradient(circle, rgba(0, 122, 255, 0.2) 0%, transparent 70%);
+        background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
         border-radius: 50%;
         transform: translate(-50%, -50%);
         animation: brainPulse 2s ease-in-out infinite;
@@ -561,7 +558,7 @@ const animationStyles = `
     
     .progress-fill {
         height: 100%;
-        background: var(--gradient-primary);
+        background: var(--primary-gradient);
         border-radius: 4px;
         width: 0%;
         transition: width 0.3s ease;

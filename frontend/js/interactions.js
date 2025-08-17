@@ -95,7 +95,7 @@ function getRemainingScans() {
     return Math.max(0, MAX_FREE_SCANS - data.scansUsed);
 }
 
-// Advanced Chart Analysis Demo with OpenAI Integration
+// Advanced Chart Analysis Demo
 const LOADING_MESSAGES = [
     "Initializing AI models...",
     "Analyzing chart patterns...",
@@ -321,8 +321,8 @@ function showAdvancedResults(result) {
     const sentimentClass = result.sentiment;
     const sentimentIcon = result.sentiment === 'bullish' ? '📈' : 
                          result.sentiment === 'bearish' ? '📉' : '➡️';
-    const sentimentColor = result.sentiment === 'bullish' ? 'var(--primary-green)' : 
-                          result.sentiment === 'bearish' ? 'var(--primary-red)' : 'var(--primary-orange)';
+    const sentimentColor = result.sentiment === 'bullish' ? 'var(--primary-blue)' : 
+                          result.sentiment === 'bearish' ? '#EF4444' : '#F59E0B';
     
     demoInterface.innerHTML = `
         <div class="advanced-results">
@@ -476,7 +476,7 @@ function updateAdvancedDemoCounter() {
         counter.textContent = remaining;
         
         if (remaining === 0) {
-            counter.parentElement.innerHTML = '<span style="color: var(--primary-red);">0 scans remaining</span>';
+            counter.parentElement.innerHTML = '<span style="color: #EF4444;">0 scans remaining</span>';
         }
     }
 }
@@ -661,7 +661,7 @@ const advancedStyles = `
     
     .progress-fill-advanced {
         height: 100%;
-        background: var(--gradient-primary);
+        background: var(--primary-gradient);
         border-radius: 4px;
         width: 0%;
         transition: width 0.3s ease;
@@ -721,18 +721,18 @@ const advancedStyles = `
     }
     
     .sentiment-display.bullish {
-        background: rgba(48, 209, 88, 0.1);
-        border-color: rgba(48, 209, 88, 0.2);
+        background: rgba(59, 130, 246, 0.1);
+        border-color: rgba(59, 130, 246, 0.2);
     }
     
     .sentiment-display.bearish {
-        background: rgba(255, 59, 48, 0.1);
-        border-color: rgba(255, 59, 48, 0.2);
+        background: rgba(239, 68, 68, 0.1);
+        border-color: rgba(239, 68, 68, 0.2);
     }
     
     .sentiment-display.neutral {
-        background: rgba(255, 149, 0, 0.1);
-        border-color: rgba(255, 149, 0, 0.2);
+        background: rgba(245, 158, 11, 0.1);
+        border-color: rgba(245, 158, 11, 0.2);
     }
     
     .sentiment-icon {
@@ -746,15 +746,15 @@ const advancedStyles = `
     }
     
     .sentiment-display.bullish .sentiment-label {
-        color: var(--primary-green);
+        color: var(--primary-blue);
     }
     
     .sentiment-display.bearish .sentiment-label {
-        color: var(--primary-red);
+        color: #EF4444;
     }
     
     .sentiment-display.neutral .sentiment-label {
-        color: var(--primary-orange);
+        color: #F59E0B;
     }
     
     .confidence-score {
@@ -813,15 +813,15 @@ const advancedStyles = `
     }
     
     .metric-value.support {
-        color: var(--primary-green);
+        color: var(--primary-blue);
     }
     
     .metric-value.resistance {
-        color: var(--primary-red);
+        color: #EF4444;
     }
     
     .metric-value.target {
-        color: var(--primary-blue);
+        color: var(--primary-pink);
     }
     
     .recommendation-content p {
@@ -834,7 +834,7 @@ const advancedStyles = `
         justify-content: space-between;
         align-items: center;
         padding: var(--spacing-md);
-        background: rgba(0, 122, 255, 0.1);
+        background: rgba(59, 130, 246, 0.1);
         border-radius: var(--radius-lg);
     }
     
@@ -871,7 +871,7 @@ const advancedStyles = `
     }
     
     .action-btn.primary {
-        background: var(--gradient-primary);
+        background: var(--primary-gradient);
         color: white;
         box-shadow: var(--shadow-md);
     }
@@ -879,6 +879,7 @@ const advancedStyles = `
     .action-btn.primary:hover {
         transform: translateY(-2px);
         box-shadow: var(--shadow-xl);
+        background: var(--primary-gradient-hover);
     }
     
     .action-btn.secondary {
@@ -889,13 +890,13 @@ const advancedStyles = `
     }
     
     .action-btn.secondary:hover {
-        background: rgba(255, 255, 255, 0.2);
+        background: var(--glass-bg-strong);
         transform: translateY(-1px);
     }
     
     .upload-zone.drag-over {
         border-color: var(--primary-blue);
-        background: rgba(0, 122, 255, 0.05);
+        background: rgba(59, 130, 246, 0.05);
         transform: scale(1.02);
     }
     
@@ -928,8 +929,8 @@ const advancedStyles = `
     }
     
     .advanced-notification.error .notification-content {
-        border-color: var(--primary-red);
-        background: rgba(255, 59, 48, 0.1);
+        border-color: #EF4444;
+        background: rgba(239, 68, 68, 0.1);
     }
     
     .notification-icon {

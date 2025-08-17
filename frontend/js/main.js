@@ -8,7 +8,6 @@ const maxDemoScans = 2;
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     initializeNavigation();
-    initializeHeroDemo();
     initializeHeroUpload();
     initializePricingToggle();
     initializeScrollEffects();
@@ -56,31 +55,6 @@ function toggleMobileMenu() {
     toggle.classList.toggle('active');
 }
 
-// Hero demo functionality
-function initializeHeroDemo() {
-    const demoContent = document.getElementById('demoContent');
-    const uploadState = document.getElementById('uploadState');
-    const analysisPreview = document.getElementById('analysisPreview');
-    
-    // Auto-cycle demo states
-    let demoState = 0;
-    const demoStates = ['upload', 'analysis'];
-    
-    setInterval(() => {
-        if (demoState === 0) {
-            // Show analysis preview
-            uploadState.style.display = 'none';
-            analysisPreview.style.display = 'block';
-            demoState = 1;
-        } else {
-            // Show upload state
-            analysisPreview.style.display = 'none';
-            uploadState.style.display = 'block';
-            demoState = 0;
-        }
-    }, 4000);
-}
-
 // Hero upload functionality
 function initializeHeroUpload() {
     const heroUploadArea = document.getElementById('heroUploadArea');
@@ -125,7 +99,7 @@ function handleHeroChartUpload(event) {
     
     heroUploadArea.style.display = 'none';
     
-    // Show loading state temporarily
+    // Show loading state
     heroAnalysisResults.innerHTML = `
         <div style="text-align: center; padding: 40px;">
             <div class="loading-spinner-container">
@@ -218,7 +192,6 @@ function resetHeroAnalysis() {
 // Pricing toggle functionality
 function initializePricingToggle() {
     const toggle = document.querySelector('.toggle-switch');
-    const priceAmounts = document.querySelectorAll('.price-amount');
     
     if (toggle) {
         toggle.addEventListener('click', togglePricing);
@@ -315,7 +288,7 @@ function setupDragAndDrop(uploadZone) {
     uploadZone.addEventListener('dragover', (e) => {
         e.preventDefault();
         uploadZone.style.borderColor = 'var(--primary-blue)';
-        uploadZone.style.background = 'rgba(0, 122, 255, 0.05)';
+        uploadZone.style.background = 'rgba(59, 130, 246, 0.05)';
     });
     
     uploadZone.addEventListener('dragleave', () => {
@@ -478,7 +451,7 @@ function updateDemoCounter() {
         
         if (remaining === 0) {
             counter.parentElement.style.color = 'var(--primary-red)';
-            counter.parentElement.innerHTML = '<span style="color: var(--primary-red);">0</span> scans remaining - <a href="/register" style="color: var(--primary-blue);">Upgrade now</a>';
+            counter.parentElement.innerHTML = '<span style="color: #EF4444;">0</span> scans remaining - <a href="/register" style="color: var(--primary-blue);">Upgrade now</a>';
         }
     }
 }
@@ -520,7 +493,7 @@ function showUpgradeModal() {
             </div>
             
             <div class="upgrade-note">
-                <span>✓ 3-day free trial • No credit card required</span>
+                <span>✓ 7-day free trial • No credit card required</span>
             </div>
         </div>
     `;
@@ -593,8 +566,8 @@ function showNotification(message, type = 'info') {
             }
             
             .notification.error {
-                border-color: var(--primary-red);
-                background: rgba(255, 59, 48, 0.1);
+                border-color: #EF4444;
+                background: rgba(239, 68, 68, 0.1);
             }
             
             .notification button {
@@ -739,7 +712,7 @@ const upgradeModalStyles = `
     }
     
     .upgrade-feature .feature-icon {
-        color: var(--primary-green);
+        color: var(--primary-blue);
         font-weight: bold;
     }
     
@@ -761,13 +734,14 @@ const upgradeModalStyles = `
     }
     
     .upgrade-btn.primary {
-        background: var(--gradient-primary);
+        background: var(--primary-gradient);
         color: white;
     }
     
     .upgrade-btn.primary:hover {
         transform: translateY(-2px);
         box-shadow: var(--shadow-lg);
+        background: var(--primary-gradient-hover);
     }
     
     .upgrade-btn.secondary {
