@@ -2,1025 +2,554 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ChartMaster AI - Professional Chart Analysis with AI</title>
-    <meta name="description" content="Turn your trading charts into professional analysis. AI-powered trading recommendations in seconds.">
-    
-    <!-- Paddle JS -->
-    <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
-    
-    <!-- CSS Files -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChartMaster AI - Professional Chart Analysis</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="header-content">
-            <a href="/" class="logo">
-                <span class="logo-icon">📈</span>
-                <span>ChartMaster</span>
-                <span class="logo-ai">AI</span>
-            </a>
-            <nav class="nav-menu">
-                <a href="#demo" class="nav-link">Try it</a>
-                <a href="#how-it-works" class="nav-link">How it works</a>
-                <a href="#use-cases" class="nav-link">Use cases</a>
+    <!-- Navigation -->
+    <nav class="nav-glass">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <div class="logo-container">
+                    <div class="logo-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                            <path d="M3 3v18h18" stroke="url(#logoGradient)" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M7 14l4-4 4 4 4-4" stroke="url(#logoGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <defs>
+                                <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#007AFF"/>
+                                    <stop offset="100%" stop-color="#5856D6"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <span class="logo-text">ChartMaster</span>
+                    <span class="logo-ai">AI</span>
+                </div>
+            </div>
+            
+            <div class="nav-links">
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#demo" class="nav-link">Demo</a>
                 <a href="#pricing" class="nav-link">Pricing</a>
-                <a href="#faq" class="nav-link">FAQ</a>
-            </nav>
-            <div class="nav-buttons">
-                <a href="/login" class="login-btn">Login</a>
-                <a href="#" class="cta-btn" onclick="showUpgradeModal(); return false;">
-                    <span>🚀</span>
-                    Get ChartMaster +
-                </a>
-            </div>
-        </div>
-    </header>
-
-    <!-- Hero Section with Demo -->
-<section class="hero-with-demo">
-    <div class="hero-demo-container">
-        <!-- Left Side - Hero Content -->
-        <div class="hero-content">
-            <div class="product-badge">
-                <span>📈</span>
-                Product of the day
-                <span>1st</span>
+                <a href="/login" class="nav-link-login">Sign In</a>
+                <a href="/register" class="nav-cta">Start Free Trial</a>
             </div>
             
-            <h1>
-                Never Analyze Charts Wrong Again,<br>
-                <span class="hero-highlight">There's an AI for that.</span>
-            </h1>
-            
-            <p class="hero-subtitle">Try ChartMaster free for 7 days</p>
-            
-            <p class="hero-description">
-                Join thousands of professionals who use AI chart analysis to save time, 
-                make better trading decisions and maximize profits with accurate technical analysis.
-                Available on Web, iOS and Android.
-            </p>
-            
-            <div class="trust-badges">
-                <span>Works in:</span>
-                <div class="language-badges">
-                    <span class="language-badge">🇺🇸 US Markets</span>
-                    <span class="language-badge">🇪🇺 EU Markets</span>
-                    <span class="language-badge">💱 Forex</span>
-                    <span class="language-badge">🇩🇪 DAX</span>
-                    <span class="language-badge">🪙 Crypto</span>
-                </div>
-            </div>
-
-            <a href="#pricing" class="main-cta">
-                <span>→</span>
-                Try ChartMaster free for 7 days
-            </a>
-
-            <div class="rating">
-                <span>Trusted by +10,000 happy traders</span>
-                <span class="stars">⭐⭐⭐⭐⭐</span>
-            </div>
-
-            <div class="app-buttons">
-                <a href="#" class="app-button">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store">
-                </a>
-                <a href="#" class="app-button">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play">
-                </a>
-            </div>
-
-            <!-- Social Proof -->
-            <div class="social-proof-inline">
-                <span>Medium</span>
-                <span>INDIE HACKERS</span>
-                <span>Foundr</span>
-                <span>Scoop.it!</span>
-            </div>
-        </div>
-
-        <!-- Right Side - Interactive Demo -->
-<div class="demo-panel" id="demo">
-    <div class="demo-header">
-        <h3 class="demo-title">
-            <span class="demo-icon">📊</span>
-            Free Chart Analysis Demo
-        </h3>
-    </div>
-    
-    <div class="demo-interface-compact">
-        <div id="demoContent">
-            <!-- Upload State -->
-            <div class="upload-state">
-                <div class="upload-icon-large">📈</div>
-                <h4 class="upload-title">Try AI Chart Analysis</h4>
-                <p class="upload-subtitle">Upload any trading chart and get instant AI-powered analysis</p>
-                
-                <button class="upload-main-btn" onclick="document.getElementById('demoChartInput').click()">
-                    <span class="btn-icon">📊</span>
-                    Upload Chart Image
-                </button>
-                
-                <div class="upload-divider">
-                    <span>or</span>
-                </div>
-                
-                <div class="upload-actions">
-                    <button class="upload-action-btn" onclick="document.getElementById('demoChartInput').click()">
-                        <span>📷</span>
-                        Take Photo
-                    </button>
-                    <button class="upload-action-btn" onclick="document.getElementById('demoChartInput').click()">
-                        <span>📁</span>
-                        Browse Files
-                    </button>
-                </div>
-                
-                <div class="upload-info" id="uploadInfo">
-                    <div class="scan-counter-inline">
-                        <span class="counter-icon">🎯</span>
-                        <span class="counter-text">Free Scans Remaining:</span>
-                        <span class="counter-number" id="scansRemaining">2/2</span>
-                    </div>
-                </div>
-            </div>
-            
-            <input type="file" id="demoChartInput" accept="image/*" style="display: none;" onchange="handleDemoChartUpload(event)">
-        </div>
-        
-        <!-- Loading state (hidden) -->
-        <div id="loadingState" style="display: none;">
-            <div class="analysis-loading">
-                <div class="loading-animation">
-                    <div class="chart-scan-animation">
-                        <div class="scan-line"></div>
-                        <div class="chart-icon">📊</div>
-                    </div>
-                </div>
-                <h3 class="loading-title">Analyzing Your Chart</h3>
-                <p class="loading-message" id="loadingMessage">Detecting patterns...</p>
-                <div class="loading-steps">
-                    <div class="step-item active">
-                        <span class="step-icon">🔍</span>
-                        <span>Scanning</span>
-                    </div>
-                    <div class="step-item">
-                        <span class="step-icon">📐</span>
-                        <span>Patterns</span>
-                    </div>
-                    <div class="step-item">
-                        <span class="step-icon">📊</span>
-                        <span>Analysis</span>
-                    </div>
-                    <div class="step-item">
-                        <span class="step-icon">💡</span>
-                        <span>Results</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Result state (hidden) -->
-        <div id="resultState" style="display: none;">
-            <div class="analysis-results">
-                <div class="result-header">
-                    <h4>Analysis Complete</h4>
-                    <button class="new-analysis-btn" onclick="resetDemo()">
-                        <span>🔄</span>
-                        New Analysis
-                    </button>
-                </div>
-                
-                <div class="sentiment-card" id="sentimentCard">
-                    <div class="sentiment-indicator">
-                        <span class="sentiment-icon" id="sentimentIcon">📈</span>
-                        <div class="sentiment-details">
-                            <span class="sentiment-label">Market Sentiment</span>
-                            <span class="sentiment-value" id="sentimentText">BULLISH</span>
-                        </div>
-                    </div>
-                    <div class="confidence-meter">
-                        <div class="confidence-bar">
-                            <div class="confidence-fill" id="confidenceFill" style="width: 87%"></div>
-                        </div>
-                        <span class="confidence-text" id="confidenceText">87% Confidence</span>
-                    </div>
-                </div>
-                
-                <div class="analysis-details">
-                    <div class="detail-section">
-                        <h5>
-                            <span class="section-icon">💡</span>
-                            Recommendation
-                        </h5>
-                        <p id="recommendationText" class="recommendation-text"></p>
-                    </div>
-                    
-                    <div class="detail-section">
-                        <h5>
-                            <span class="section-icon">📋</span>
-                            Technical Analysis
-                        </h5>
-                        <p id="analysisText" class="analysis-text"></p>
-                    </div>
-                    
-                    <div id="patternsSection" class="detail-section" style="display: none;">
-                        <h5>
-                            <span class="section-icon">📐</span>
-                            Detected Patterns
-                        </h5>
-                        <div id="patternsList" class="patterns-list"></div>
-                    </div>
-
-                    <!-- NEW: Key Levels Section -->
-                    <div id="levelsSection" class="detail-section" style="display: none;">
-                        <h5>
-                            <span class="section-icon">📍</span>
-                            Key Price Levels
-                        </h5>
-                        <div id="keyLevelsList" class="key-levels-container"></div>
-                    </div>
-                </div>
-                
-                <div class="result-actions">
-                    <button class="action-btn primary" onclick="resetDemo()">
-                        <span>📊</span>
-                        Analyze Another Chart
-                    </button>
-                    <button class="action-btn secondary" onclick="window.location.href='#pricing'">
-                        <span>🚀</span>
-                        Get Full Version
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Chart info inputs (hidden) -->
-        <div id="chartInfoInputs" style="display: none;">
-            <div class="chart-preview-section">
-                <img id="previewImage" class="preview-image-compact">
-                <button class="change-image-btn" onclick="document.getElementById('demoChartInput').click()">
-                    Change Image
-                </button>
-            </div>
-            
-            <div class="input-section">
-                <h4>Enhance Your Analysis (Optional)</h4>
-                <input type="text" id="symbolInput" placeholder="Symbol/Asset (e.g., BTC/USD)" class="analysis-input">
-                <input type="text" id="timeframeInput" placeholder="Timeframe (e.g., 4H, 1D)" class="analysis-input">
-                <textarea id="notesInput" placeholder="Any specific patterns or levels to analyze?" class="analysis-input analysis-textarea"></textarea>
-                
-                <!-- NEW: Analysis Style Selection -->
-                <select id="analysisStyleInput" class="analysis-input">
-                    <option value="technical">Technical Analysis</option>
-                    <option value="price-action">Price Action</option>
-                    <option value="elliott-wave">Elliott Wave</option>
-                    <option value="fibonacci">Fibonacci</option>
-                    <option value="signal">Trading Signal</option>
-                </select>
-            </div>
-            
-            <button class="analyze-main-btn" onclick="analyzeChart()">
-                <span class="btn-icon">🤖</span>
-                Start AI Analysis
-                <span class="btn-arrow">→</span>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
         </div>
-    </div>
-    
-    <div class="demo-footer">
-        <p class="demo-footer-text">
-            <span class="footer-icon">🔒</span>
-            No signup required • 100% Free Demo
-        </p>
-    </div>
-</div>
-    </div>
-</section>
+    </nav>
 
-    <!-- Social Proof -->
-    <div class="social-proof">
-        <span>Medium</span>
-        <span>INDIE HACKERS</span>
-        <span>Foundr</span>
-        <span>Scoop.it!</span>
-    </div>
-
-    <!-- Why Choose Section -->
-    <section class="why-section">
-        <p class="section-title">Why Choose ChartMaster?</p>
-        <h2 class="section-heading">Work with AI by Your Side, Every Trade of the Way</h2>
-        
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">⏱️</div>
-                <h3 class="feature-title">Save Time</h3>
-                <p class="feature-description">
-                    Focus on what matters. Let AI handle the busywork of chart analysis so you 
-                    can reclaim your time and dedicate it to high-impact trades.
-                </p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">📈</div>
-                <h3 class="feature-title">Get More Done</h3>
-                <p class="feature-description">
-                    Boost your trading productivity. Capture insights quickly, stay on top of your markets, 
-                    and move through opportunities with greater efficiency.
-                </p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">🎯</div>
-                <h3 class="feature-title">Work Smart, Not Hard</h3>
-                <p class="feature-description">
-                    Leverage AI for effortless market analysis. ChartMaster makes it easy to stay productive 
-                    and efficient without the hassle of manual chart analysis.
-                </p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">🚀</div>
-                <h3 class="feature-title">Get Ahead Instead of Left Behind</h3>
-                <p class="feature-description">
-                    Stay competitive in an AI-driven world. Using AI isn't optional — it's essential. 
-                    Keep pace with modern tools to maintain your edge.
-                </p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">📱</div>
-                <h3 class="feature-title">Stay Organized</h3>
-                <p class="feature-description">
-                    Turn chaos into clarity. With customizable templates and automatic structuring, 
-                    ChartMaster ensures that every analysis is right where you need it.
-                </p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">🔒</div>
-                <h3 class="feature-title">Never Miss a Thing</h3>
-                <p class="feature-description">
-                    Capture every idea, every detail. ChartMaster helps you avoid information overload 
-                    by keeping all your thoughts organized and accessible.
-                </p>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-background">
+            <div class="hero-gradient"></div>
+            <div class="hero-mesh"></div>
+            <div class="floating-elements">
+                <div class="float-element float-1"></div>
+                <div class="float-element float-2"></div>
+                <div class="float-element float-3"></div>
             </div>
         </div>
-    </section>
-
-    <!-- Testimonial -->
-    <div class="testimonial">
-        <p class="testimonial-content">
-            "This app has great practical use. Whether you're brainstorming ideas for day trading, 
-            processing your swing trades, or long-term investing, this captured all of it and puts 
-            it into whatever format you want. SUPER clean and easy to use. The developer has been 
-            a great innovator & we're grateful for this service."
-        </p>
-        <div class="testimonial-author">
-            <div class="author-avatar">
-                <img src="https://via.placeholder.com/48" alt="Testimonial">
-            </div>
-            <div class="author-info">
-                <div class="author-name">- Michael Chen, review on Apple App Store</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- How it Works -->
-    <section class="how-section" id="how-it-works">
-        <p class="section-title">How it works</p>
-        <h2 class="section-heading">Analyze Charts in Seconds, Stay Ahead for Hours</h2>
         
-        <div class="steps-container">
-            <div class="step active" onclick="toggleStep(this)">
-                <div class="step-header">
-                    <h3 class="step-title">
-                        <span class="step-number">1.</span>
-                        Upload Chart with One Button
-                    </h3>
-                    <span class="step-icon">×</span>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-icon">✨</span>
+                    <span>Powered by Advanced AI</span>
                 </div>
-                <div class="step-content">
-                    <p>Effortlessly capture your charts with a single tap. Start uploading instantly 
-                    and let ChartMaster run in the background, so you can stay focused on what 
-                    matters without interruptions.</p>
-                    <div class="step-preview">
-                        <div class="phone-mockup">
-                            <div class="timer">20:00</div>
-                            <div class="control-buttons">
-                                <button class="control-btn">▶</button>
-                                <button class="control-btn active">📊</button>
-                                <button class="control-btn">□</button>
+                
+                <h1 class="hero-title">
+                    Professional Chart Analysis
+                    <span class="title-highlight">Powered by AI</span>
+                </h1>
+                
+                <p class="hero-description">
+                    Transform your trading charts into actionable insights with our advanced AI. 
+                    Get professional-grade analysis in seconds, not hours.
+                </p>
+                
+                <div class="hero-actions">
+                    <a href="/register" class="hero-cta primary">
+                        <span>Start Free Trial</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <button class="hero-cta secondary" onclick="scrollToDemo()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="5 3 19 12 5 21 5 3"/>
+                        </svg>
+                        <span>Watch Demo</span>
+                    </button>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">98.5%</div>
+                        <div class="stat-label">Accuracy</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">< 30s</div>
+                        <div class="stat-label">Analysis Time</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50k+</div>
+                        <div class="stat-label">Traders</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="demo-container-hero">
+                    <div class="demo-window">
+                        <div class="window-header">
+                            <div class="window-controls">
+                                <div class="control red"></div>
+                                <div class="control yellow"></div>
+                                <div class="control green"></div>
+                            </div>
+                            <div class="window-title">Chart Analysis</div>
+                        </div>
+                        <div class="window-content" id="demoContent">
+                            <div class="upload-state" id="uploadState">
+                                <div class="upload-icon-animated">
+                                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                                        <polyline points="17 8 12 3 7 8"/>
+                                        <line x1="12" y1="3" x2="12" y2="15"/>
+                                    </svg>
+                                </div>
+                                <h3>Drop Chart Here</h3>
+                                <p>AI analysis in seconds</p>
+                            </div>
+                            
+                            <div class="analysis-preview" id="analysisPreview" style="display: none;">
+                                <div class="analysis-header">
+                                    <div class="sentiment-indicator bullish">
+                                        <div class="sentiment-icon">📈</div>
+                                        <div class="sentiment-text">BULLISH</div>
+                                        <div class="confidence-score">87%</div>
+                                    </div>
+                                </div>
+                                <div class="analysis-content">
+                                    <div class="insight-item">
+                                        <span class="insight-label">Pattern:</span>
+                                        <span class="insight-value">Ascending Triangle</span>
+                                    </div>
+                                    <div class="insight-item">
+                                        <span class="insight-label">Support:</span>
+                                        <span class="insight-value">$64,200</span>
+                                    </div>
+                                    <div class="insight-item">
+                                        <span class="insight-label">Target:</span>
+                                        <span class="insight-value">$68,500</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <div class="step" onclick="toggleStep(this)">
-                <div class="step-header">
-                    <h3 class="step-title">
-                        <span class="step-number">2.</span>
-                        Select Your Style
-                    </h3>
-                    <span class="step-icon">+</span>
-                </div>
-                <div class="step-content">
-                    <p>Choose from various analysis styles like Technical Analysis, Price Action, 
-                    Fibonacci, Elliott Waves, or create your own custom style to match your 
-                    trading strategy perfectly.</p>
-                </div>
-            </div>
-            
-            <div class="step" onclick="toggleStep(this)">
-                <div class="step-header">
-                    <h3 class="step-title">
-                        <span class="step-number">3.</span>
-                        Analyze & Summarize with 99% Accuracy
-                    </h3>
-                    <span class="step-icon">+</span>
-                </div>
-                <div class="step-content">
-                    <p>Our advanced AI analyzes your charts with exceptional precision, identifying 
-                    patterns, trends, support/resistance levels, and generating clear trading 
-                    recommendations based on proven strategies.</p>
-                </div>
-            </div>
-            
-            <div class="step" onclick="toggleStep(this)">
-                <div class="step-header">
-                    <h3 class="step-title">
-                        <span class="step-number">4.</span>
-                        Edit, then Share & Export Analysis Easily
-                    </h3>
-                    <span class="step-icon">+</span>
-                </div>
-                <div class="step-content">
-                    <p>Refine your analyses, share them with your team, or export them in various 
-                    formats. Track your trading performance and optimize your strategies based 
-                    on AI insights.</p>
-                </div>
-            </div>
-        </div>
-
-        <a href="#pricing" class="section-cta">
-            <span>→</span>
-            Try ChartMaster free for 7 days
-        </a>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="testimonials-section">
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <p class="testimonial-text">
-                    "So simple, yet effective. I use ChartMaster to analyze most of our trading 
-                    charts. I would highly recommend to those looking to save time on their 
-                    technical analysis."
-                </p>
-                <div class="testimonial-footer">
-                    <img src="https://via.placeholder.com/40" alt="Author">
-                    <span>- David Johnson, from Trustpilot</span>
-                </div>
-            </div>
-            
-            <div class="testimonial-card">
-                <p class="testimonial-text">
-                    "This is really helpful for analyzing charts on the fly. The app is user 
-                    friendly, easy to use, and does exactly as advertised."
-                </p>
-                <div class="testimonial-footer">
-                    <img src="https://via.placeholder.com/40" alt="Author">
-                    <span>- Sarah Williams, review from Product Hunt</span>
-                </div>
-            </div>
         </div>
     </section>
 
-    <!-- Use Cases -->
-    <section class="use-cases-section" id="use-cases">
-        <p class="section-title">Use cases</p>
-        <h2 class="section-heading">Here is how ChartMaster can help you</h2>
-        
-        <div class="use-cases-grid">
-            <div class="use-case-card">
-                <div class="use-case-icon">💡</div>
-                <h3 class="use-case-title">Effortless Day Trading</h3>
-                <p class="use-case-description">
-                    Never forget a trading idea again! Capture your best thoughts while they're fresh, 
-                    and let our app do the analysis for you.
-                </p>
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Why Choose ChartMaster AI</h2>
+                <p class="section-subtitle">Professional-grade analysis tools designed for modern traders</p>
             </div>
             
-            <div class="use-case-card">
-                <div class="use-case-icon">🖊️</div>
-                <h3 class="use-case-title">Easy Market Analysis</h3>
-                <p class="use-case-description">
-                    Say goodbye to hours of chart analysis. With ChartMaster, you can upload your 
-                    charts and watch them transform into actionable insights in seconds.
-                </p>
-            </div>
-            
-            <div class="use-case-card">
-                <div class="use-case-icon">📓</div>
-                <h3 class="use-case-title">Trading Journal</h3>
-                <p class="use-case-description">
-                    Discover a new way to journal! Express your thoughts, feelings, and memories 
-                    effortlessly just by uploading your trades.
-                </p>
-            </div>
-            
-            <div class="use-case-card">
-                <div class="use-case-icon">🎙️</div>
-                <h3 class="use-case-title">Strategy Development</h3>
-                <p class="use-case-description">
-                    Develop trading strategies like a pro! ChartMaster provides instant, accurate 
-                    analysis so you can focus on building profitable strategies.
-                </p>
-            </div>
-            
-            <div class="use-case-card">
-                <div class="use-case-icon">🏢</div>
-                <h3 class="use-case-title">Team Collaboration</h3>
-                <p class="use-case-description">
-                    Transform your team meetings with ChartMaster! Record, analyze, and never 
-                    miss crucial market insights again.
-                </p>
-            </div>
-            
-            <div class="use-case-card">
-                <div class="use-case-icon">🎓</div>
-                <h3 class="use-case-title">Learn Faster</h3>
-                <p class="use-case-description">
-                    Supercharge your trading education with ChartMaster! Convert lessons and 
-                    webinars into clear notes and flashcards.
-                </p>
-            </div>
-        </div>
-
-        <a href="#pricing" class="section-cta">
-            <span>→</span>
-            Try ChartMaster free for 7 days
-        </a>
-    </section>
-
-    <!-- Testimonials 2 -->
-    <section class="testimonials-section">
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <p class="testimonial-text">
-                    "The quality of the analysis is fantastic and requires virtually no rework. 
-                    Compared to incomparably more expensive tools, the results are dimensions better."
-                </p>
-                <div class="testimonial-footer">
-                    <img src="https://via.placeholder.com/40" alt="Author">
-                    <span>- Thomas Mueller, from TradingCommunity</span>
+            <div class="features-grid">
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">AI-Powered Analysis</h3>
+                    <p class="feature-description">Advanced machine learning algorithms analyze patterns, trends, and market sentiment with 98.5% accuracy.</p>
                 </div>
-            </div>
-            
-            <div class="testimonial-card">
-                <p class="testimonial-text">
-                    "I've started using ChartMaster for my work and it has helped me save a lot 
-                    of time. The app is very user friendly, easy to use, and very accurate. 
-                    I rarely have to correct things and it's very simple to use."
-                </p>
-                <div class="testimonial-footer">
-                    <img src="https://via.placeholder.com/40" alt="Author">
-                    <span>- Lisa Chen, review on Apple App Store</span>
+                
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Lightning Fast</h3>
+                    <p class="feature-description">Get comprehensive analysis in under 30 seconds. No more waiting hours for professional insights.</p>
+                </div>
+                
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 12l2 2 4-4"/>
+                            <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3"/>
+                            <path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3"/>
+                            <path d="M12 3c0 1-1 3-3 3s-3-2-3-3 1-3 3-3 3 2 3 3"/>
+                            <path d="M12 21c0-1 1-3 3-3s3 2 3 3-1 3-3 3-3-2-3-3"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Multiple Strategies</h3>
+                    <p class="feature-description">Technical analysis, price action, Elliott Wave, Fibonacci - choose from 12+ analysis styles.</p>
+                </div>
+                
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                            <line x1="12" y1="22.08" x2="12" y2="12"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Professional Tools</h3>
+                    <p class="feature-description">Smart money flow, order blocks, volume profile - institutional-grade analysis tools.</p>
+                </div>
+                
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 010 7.75"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Trusted by 50k+ Traders</h3>
+                    <p class="feature-description">Join thousands of professional traders who rely on ChartMaster AI for their daily analysis.</p>
+                </div>
+                
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                            <circle cx="12" cy="16" r="1"/>
+                            <path d="M7 11V7a5 5 0 0110 0v4"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Enterprise Security</h3>
+                    <p class="feature-description">Bank-grade encryption and security. Your charts and data are always protected and private.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Styles Section -->
-    <section class="styles-section">
-        <p class="section-title">+100 premade styles to pick from</p>
-        <p class="styles-subtitle">
-            Boost your productivity with styles for every need. From trend analysis to detailed 
-            technical reports, ChartMaster helps you turn ideas into action!
-        </p>
-        
-        <div class="styles-grid">
-            <div class="style-card">
-                <div class="style-icon">📝</div>
-                <h4 class="style-title">Trading Signal</h4>
-                <p class="style-description">
-                    Transform chart patterns into clear trading signals with entry, 
-                    stop-loss and take-profit levels.
-                </p>
-            </div>
-            
-            <div class="style-card">
-                <div class="style-icon">🎬</div>
-                <h4 class="style-title">Market Update</h4>
-                <p class="style-description">
-                    Organize market updates into structured reports for your followers 
-                    or team members.
-                </p>
-            </div>
-            
-            <div class="style-card">
-                <div class="style-icon">📧</div>
-                <h4 class="style-title">Newsletter</h4>
-                <p class="style-description">
-                    Turn market analysis into a newsletter, with a friendly and engaging tone.
-                </p>
-            </div>
-            
-            <div class="style-card">
-                <div class="style-icon">💼</div>
-                <h4 class="style-title">Portfolio Report</h4>
-                <p class="style-description">
-                    Turn chart analysis into a professional portfolio report with 
-                    performance metrics.
-                </p>
-            </div>
-            
-            <div class="style-card">
-                <div class="style-icon">📊</div>
-                <h4 class="style-title">Technical Analysis</h4>
-                <p class="style-description">
-                    Create detailed technical analysis with all important indicators 
-                    and patterns identified.
-                </p>
-            </div>
-            
-            <div class="style-card">
-                <div class="style-icon">📝</div>
-                <h4 class="style-title">Trading Plan</h4>
-                <p class="style-description">
-                    Develop structured trading plans with clear rules, entry/exit 
-                    points and risk management.
-                </p>
-            </div>
-            
-            <div class="style-card">
-                <div class="style-icon">✅</div>
-                <h4 class="style-title">Task List</h4>
-                <p class="style-description">
-                    Convert trading rules into a task list, using "-" for tasks 
-                    without numbers.
-                </p>
-            </div>
-            
-            <div class="style-card">
-                <div class="style-icon">🐦</div>
-                <h4 class="style-title">Tweet</h4>
-                <p class="style-description">
-                    Create a short tweet from market observations, keeping it casual 
-                    and friendly.
-                </p>
-            </div>
-            
-            <div class="style-card">
-                <div class="style-icon">🎙️</div>
-                <h4 class="style-title">Podcast Script</h4>
-                <p class="style-description">
-                    Create detailed scripts for trading podcasts from market analysis.
-                </p>
-            </div>
-            
-            <div class="style-card">
-                <div class="style-icon">📋</div>
-                <h4 class="style-title">Blog post planner</h4>
-                <p class="style-description">
-                    Organize the main ideas in your analysis into multiple blog post outlines.
-                </p>
-            </div>
-            
-            <div class="style-card">
-                <div class="style-icon">And more...</div>
-                <h4 class="style-title">And more...</h4>
-                <p class="style-description">
-                    We add new styles frequently, and you can even create your own!
-                </p>
-            </div>
-        </div>
-        
-        <div class="custom-style-cta">
-            <h3>...or create your own!</h3>
-            <p>Can't find the perfect style or need something very specific? Give your own 
-            instructions for the AI to follow in just a few clicks. Your creativity is the only limit!</p>
-            <div class="custom-style-preview">
-                <img src="https://via.placeholder.com/600x400" alt="Custom style preview">
-            </div>
-        </div>
-
-        <a href="#pricing" class="section-cta">
-            <span>→</span>
-            Try ChartMaster free for 7 days
-        </a>
-    </section>
-
-    <!-- Share & Export -->
-    <section class="export-section">
-        <p class="section-title">Share & Export</p>
-        <h2 class="section-heading">Turn your analysis into actionable trades</h2>
-        
-        <div class="integrations">
-            <div class="integration-group">
-                <div class="integration-icons">
-                    <img src="https://via.placeholder.com/150x50" alt="Zapier">
+    <!-- Demo Section -->
+    <section class="demo-section" id="demo">
+        <div class="section-container">
+            <div class="demo-content">
+                <div class="demo-text">
+                    <h2 class="section-title">See It In Action</h2>
+                    <p class="section-subtitle">Upload any trading chart and get instant AI analysis</p>
+                    
+                    <div class="demo-features">
+                        <div class="demo-feature">
+                            <div class="demo-feature-icon">⚡</div>
+                            <div class="demo-feature-text">
+                                <h4>Instant Analysis</h4>
+                                <p>Results in under 30 seconds</p>
+                            </div>
+                        </div>
+                        <div class="demo-feature">
+                            <div class="demo-feature-icon">🎯</div>
+                            <div class="demo-feature-text">
+                                <h4>Precise Insights</h4>
+                                <p>Entry, stop-loss, and target levels</p>
+                            </div>
+                        </div>
+                        <div class="demo-feature">
+                            <div class="demo-feature-icon">📊</div>
+                            <div class="demo-feature-text">
+                                <h4>Multiple Formats</h4>
+                                <p>PNG, JPG, TradingView exports</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="/register" class="demo-cta">Try It Free</a>
                 </div>
-                <h3 class="integration-title">Send it to 1000s of other apps</h3>
-                <p class="integration-description">
-                    Connect ChartMaster to your favorite trading apps with Zapier or Webhooks! 
-                    Perfect to automate publishing and workflows!
-                </p>
-            </div>
-            
-            <div class="integration-group">
-                <div class="integration-icons">
-                    <span class="format-icon">M↓</span>
-                    <span class="format-icon pdf">PDF</span>
-                    <span class="format-icon">TXT</span>
-                </div>
-                <h3 class="integration-title">Export in PDF, Text or Markdown</h3>
-                <p class="integration-description">
-                    Export your analysis in PDF, Text or Markdown to use them in your favorite tools.
-                </p>
-            </div>
-            
-            <div class="integration-group">
-                <div class="integration-icons">
-                    <span class="link-icon">🔗</span>
-                </div>
-                <h3 class="integration-title">Publish with just a link!</h3>
-                <p class="integration-description">
-                    Need to share an analysis quickly? Make it public and share with the world 
-                    via a simple link!
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Additional CTA -->
-    <div class="cta-section">
-        <a href="#pricing" class="main-cta">
-            <span>→</span>
-            Try ChartMaster free for 7 days
-        </a>
-    </div>
-
-    <!-- More Testimonials -->
-    <section class="testimonials-section">
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <p class="testimonial-text">
-                    "Absolutely love ChartMaster. I have wrist pain so being able to dictate 
-                    my analysis not only saves me time but relieves my pain! Win win. 
-                    Highly recommend!"
-                </p>
-                <div class="testimonial-footer">
-                    <img src="https://via.placeholder.com/40" alt="Author">
-                    <span>- Emma Davis, from Product Hunt</span>
-                </div>
-            </div>
-            
-            <div class="testimonial-card">
-                <p class="testimonial-text">
-                    "The quality of the analysis is fantastic and requires virtually no rework. 
-                    Compared to incomparably more expensive tools, the results are dimensions better."
-                </p>
-                <div class="testimonial-footer">
-                    <img src="https://via.placeholder.com/40" alt="Author">
-                    <span>- Robert Smith, from TradingCommunity</span>
+                
+                <div class="demo-interactive">
+                    <div class="demo-panel glass-card">
+                        <div class="demo-header">
+                            <h3>Live Demo</h3>
+                            <div class="demo-counter">
+                                <span id="demoScansRemaining">2</span> free scans remaining
+                            </div>
+                        </div>
+                        
+                        <div class="demo-interface" id="demoInterface">
+                            <div class="upload-zone" onclick="document.getElementById('demoChartInput').click()">
+                                <input type="file" id="demoChartInput" accept="image/*" style="display: none;" onchange="handleDemoChartUpload(event)">
+                                <div class="upload-content">
+                                    <div class="upload-icon-large">📊</div>
+                                    <h3>Drop Chart Here</h3>
+                                    <p>or click to browse</p>
+                                    <div class="supported-formats">
+                                        <span>PNG</span>
+                                        <span>JPG</span>
+                                        <span>TradingView</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="demo-loading" id="demoLoading" style="display: none;">
+                                <div class="loading-animation">
+                                    <div class="loading-spinner"></div>
+                                    <div class="loading-brain">🧠</div>
+                                </div>
+                                <h3>Analyzing Chart...</h3>
+                                <p id="loadingMessage">Detecting patterns...</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="progressFill"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="demo-results" id="demoResults" style="display: none;">
+                                <div class="results-header">
+                                    <div class="sentiment-badge bullish">
+                                        <span class="sentiment-icon">📈</span>
+                                        <span class="sentiment-text">BULLISH</span>
+                                        <span class="confidence">87%</span>
+                                    </div>
+                                    <button class="new-analysis-btn" onclick="resetDemo()">New Analysis</button>
+                                </div>
+                                
+                                <div class="results-content">
+                                    <div class="result-item">
+                                        <span class="result-label">Pattern Detected:</span>
+                                        <span class="result-value">Ascending Triangle</span>
+                                    </div>
+                                    <div class="result-item">
+                                        <span class="result-label">Support Level:</span>
+                                        <span class="result-value">$64,200</span>
+                                    </div>
+                                    <div class="result-item">
+                                        <span class="result-label">Target Price:</span>
+                                        <span class="result-value">$68,500</span>
+                                    </div>
+                                    <div class="result-item">
+                                        <span class="result-label">Risk/Reward:</span>
+                                        <span class="result-value">1:3.2</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="results-actions">
+                                    <button class="result-action primary">Get Full Analysis</button>
+                                    <button class="result-action secondary">Export PDF</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Pricing Section -->
-<section class="pricing-section" id="pricing">
-    <p class="section-title">Pricing</p>
-    <h2 class="section-heading">Start Your 3 Day Free Trial</h2>
-    <p class="pricing-subtitle">
-        Get ChartMaster: <strong class="gradient-text">ALL FEATURES</strong>
-    </p>
-    
-    <div class="pricing-cards">
-        <div class="pricing-card">
-            <h3 class="plan-name">Monthly</h3>
-            <p class="plan-subtitle">Try 3 days free then $19.97/month</p>
-            <div class="plan-price">
-                $19.97
-                <span>/month</span>
+    <section class="pricing-section" id="pricing">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Choose Your Plan</h2>
+                <p class="section-subtitle">Start with a 3-day free trial, no credit card required</p>
             </div>
-            <ul class="plan-features">
-                <li><span class="check">✓</span> iOS and Android app</li>
-                <li><span class="check">✓</span> Unlimited analyses</li>
-                <li><span class="check">✓</span> 2h recording</li>
-                <li><span class="check">✓</span> Upload files</li>
-                <li><span class="check">✓</span> Custom styles</li>
-                <li><span class="check">✓</span> Export to text, mail, URL etc</li>
-                <li><span class="check">✓</span> Store and organize your analyses</li>
-            </ul>
-            <button class="plan-cta-gradient" onclick="event.preventDefault(); startDirectCheckout('monthly')">
-                <span>→</span>
-                Try 3 Days Free
-            </button>
-            <div class="secure-payment">
-                <span>🔒</span>
-                Secure payment via Paddle
+            
+            <div class="pricing-toggle">
+                <span class="toggle-label">Monthly</span>
+                <div class="toggle-switch" onclick="togglePricing()">
+                    <div class="toggle-knob"></div>
+                </div>
+                <span class="toggle-label">Yearly <span class="save-badge">Save 20%</span></span>
             </div>
-        </div>
-        
-        <div class="pricing-card featured">
-            <div class="best-value-badge">BEST VALUE</div>
-            <h3 class="plan-name">Yearly</h3>
-            <p class="plan-subtitle">Try 3 days free then $16/month</p>
-            <div class="plan-price">
-                $197
-                <span>/year</span>
-            </div>
-            <div class="savings-badge">Save $43 per year!</div>
-            <ul class="plan-features">
-                <li><span class="check">✓</span> iOS and Android app</li>
-                <li><span class="check">✓</span> Unlimited analyses</li>
-                <li><span class="check">✓</span> 2h recording</li>
-                <li><span class="check">✓</span> Upload files</li>
-                <li><span class="check">✓</span> Custom styles</li>
-                <li><span class="check">✓</span> Export to text, mail, URL etc</li>
-                <li><span class="check">✓</span> Store and organize your analyses</li>
-            </ul>
-            <button class="plan-cta-gradient featured" onclick="event.preventDefault(); startDirectCheckout('yearly')">
-                <span>→</span>
-                Try 3 Days Free
-            </button>
-            <div class="secure-payment">
-                <span>🔒</span>
-                Secure payment via Paddle
-            </div>
-        </div>
-    </div>
-    
-    <p class="pricing-note">
-        <span>💳</span> No charges for 3 days • Cancel anytime • Card required to prevent abuse
-    </p>
-</section>
-
-    <!-- Trust Section -->
-    <div class="trust-section">
-        <p class="trust-text">
-            Trusted by +10,000 happy users ⭐⭐⭐⭐⭐
-        </p>
-    </div>
-
-    <!-- Social Proof Again -->
-    <div class="social-proof">
-        <span>Medium</span>
-        <span>INDIE HACKERS</span>
-        <span>Foundr</span>
-        <span>Scoop.it!</span>
-    </div>
-
-    <!-- Final Testimonials -->
-    <section class="testimonials-section">
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <p class="testimonial-text">
-                    "A perfect tool to work in different ways, if it's scalping, day trading, 
-                    swing trading - I love it!"
-                </p>
-                <div class="testimonial-footer">
-                    <img src="https://via.placeholder.com/40" alt="Author">
-                    <span>- Alex Johnson, reviewed on Trustpilot</span>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card glass-card">
+                    <div class="plan-header">
+                        <h3 class="plan-name">Starter</h3>
+                        <p class="plan-description">Perfect for individual traders</p>
+                    </div>
+                    <div class="plan-price">
+                        <span class="price-amount" data-monthly="19" data-yearly="15">$19</span>
+                        <span class="price-period">/month</span>
+                    </div>
+                    <div class="plan-features">
+                        <div class="feature-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>100 analyses per month</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>5 analysis styles</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>PDF exports</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>Email support</span>
+                        </div>
+                    </div>
+                    <a href="/register?plan=starter" class="plan-cta">Start Free Trial</a>
+                </div>
+                
+                <div class="pricing-card glass-card featured">
+                    <div class="popular-badge">Most Popular</div>
+                    <div class="plan-header">
+                        <h3 class="plan-name">Professional</h3>
+                        <p class="plan-description">For serious traders and analysts</p>
+                    </div>
+                    <div class="plan-price">
+                        <span class="price-amount" data-monthly="39" data-yearly="31">$39</span>
+                        <span class="price-period">/month</span>
+                    </div>
+                    <div class="plan-features">
+                        <div class="feature-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>Unlimited analyses</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>All 12+ analysis styles</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>Advanced AI models</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>API access</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>Priority support</span>
+                        </div>
+                    </div>
+                    <a href="/register?plan=professional" class="plan-cta">Start Free Trial</a>
+                </div>
+                
+                <div class="pricing-card glass-card">
+                    <div class="plan-header">
+                        <h3 class="plan-name">Enterprise</h3>
+                        <p class="plan-description">For teams and institutions</p>
+                    </div>
+                    <div class="plan-price">
+                        <span class="price-amount">Custom</span>
+                    </div>
+                    <div class="plan-features">
+                        <div class="feature-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>Everything in Professional</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>Custom integrations</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>Dedicated support</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>SLA guarantee</span>
+                        </div>
+                    </div>
+                    <a href="mailto:enterprise@chartmaster.ai" class="plan-cta secondary">Contact Sales</a>
                 </div>
             </div>
             
-            <div class="testimonial-card">
-                <p class="testimonial-text">
-                    "Been using it for the last 2 months. Super easy. Saves me 5 hours 
-                    every week minimum."
-                </p>
-                <div class="testimonial-footer">
-                    <img src="https://via.placeholder.com/40" alt="Author">
-                    <span>- Maria Garcia, Entrepreneur</span>
+            <div class="pricing-footer">
+                <p>All plans include a 3-day free trial. No credit card required.</p>
+                <div class="trust-indicators">
+                    <div class="trust-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                            <circle cx="12" cy="16" r="1"/>
+                            <path d="M7 11V7a5 5 0 0110 0v4"/>
+                        </svg>
+                        <span>Secure Payment</span>
+                    </div>
+                    <div class="trust-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 12l2 2 4-4"/>
+                            <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3"/>
+                        </svg>
+                        <span>Cancel Anytime</span>
+                    </div>
+                    <div class="trust-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                        <span>30-Day Guarantee</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section class="faq-section" id="faq">
-        <p class="section-title">F.A.Q</p>
-        
-        <div class="faq-container">
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    Is there a mobile app?
-                    <span class="faq-icon">⌄</span>
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-background">
+            <div class="cta-gradient"></div>
+        </div>
+        <div class="section-container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Transform Your Trading?</h2>
+                <p class="cta-subtitle">Join 50,000+ traders using ChartMaster AI for professional chart analysis</p>
+                <div class="cta-actions">
+                    <a href="/register" class="cta-button primary">
+                        <span>Start Free Trial</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <a href="/login" class="cta-button secondary">Sign In</a>
                 </div>
-                <div class="faq-answer">
-                    Yes! ChartMaster is available on iOS and Android. You can analyze charts on the go, 
-                    sync your analyses across devices, and access your trading insights from anywhere.
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    How accurate is the chart analysis?
-                    <span class="faq-icon">⌄</span>
-                </div>
-                <div class="faq-answer">
-                    Our AI achieves over 99% accuracy in pattern recognition. The analysis is based on 
-                    millions of historical chart data points and is continuously improved. Of course, 
-                    you should always use your own judgment in trading decisions.
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    Can I use ChartMaster in different languages?
-                    <span class="faq-icon">⌄</span>
-                </div>
-                <div class="faq-answer">
-                    Yes! ChartMaster supports over 50 languages. The AI can analyze charts with annotations 
-                    in any language and output results in your preferred language.
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    Can I upload my own trading strategies?
-                    <span class="faq-icon">⌄</span>
-                </div>
-                <div class="faq-answer">
-                    Absolutely! You can define your own trading strategies and rules. The AI will consider 
-                    these when analyzing charts and provide personalized recommendations based on your strategy.
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    Can I edit the analysis once it's generated?
-                    <span class="faq-icon">⌄</span>
-                </div>
-                <div class="faq-answer">
-                    Yes, all analyses can be edited after creation. You can add, remove, or modify text 
-                    before exporting or sharing the analysis with others.
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    Do I need an internet connection to use ChartMaster?
-                    <span class="faq-icon">⌄</span>
-                </div>
-                <div class="faq-answer">
-                    An internet connection is required for AI analysis. However, you can view and edit 
-                    your saved analyses offline. The app will automatically sync when you're back online.
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    What about privacy?
-                    <span class="faq-icon">⌄</span>
-                </div>
-                <div class="faq-answer">
-                    Your data is secure with us. We use end-to-end encryption for all your charts and 
-                    analyses. We never sell your data to third parties and you maintain full control 
-                    over your content.
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    How can I contact support if I have questions or need help?
-                    <span class="faq-icon">⌄</span>
-                </div>
-                <div class="faq-answer">
-                    Our support team is available 24/7. You can reach us at support@chartmaster-ai.com 
-                    or use the live chat in the app. We typically respond within 2 hours.
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    How can I cancel my subscription?
-                    <span class="faq-icon">⌄</span>
-                </div>
-                <div class="faq-answer">
-                    You can cancel your subscription anytime in the settings. There are no cancellation 
-                    fees or hidden charges. After cancellation, you'll still have access until the end 
-                    of your billing period.
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    How long is the discount valid when I subscribe?
-                    <span class="faq-icon">⌄</span>
-                </div>
-                <div class="faq-answer">
-                    The current pricing is an introductory offer for new members who sign up now. 
-                    Once you subscribe, your price remains the same as long as you keep your 
-                    subscription active.
+                <div class="cta-note">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 12l2 2 4-4"/>
+                    </svg>
+                    <span>No credit card required • 3-day free trial • Cancel anytime</span>
                 </div>
             </div>
         </div>
@@ -1028,749 +557,90 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-logo">ChartMaster AI</div>
-            <div class="footer-links">
-                <a href="/privacy" class="footer-link">Privacy</a>
-                <a href="/terms" class="footer-link">Terms</a>
-                <a href="/support" class="footer-link">Support</a>
-                <a href="/api" class="footer-link">API</a>
-                <a href="/blog" class="footer-link">Blog</a>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo-container">
+                        <div class="logo-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                                <path d="M3 3v18h18" stroke="url(#footerLogoGradient)" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M7 14l4-4 4 4 4-4" stroke="url(#footerLogoGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <defs>
+                                    <linearGradient id="footerLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#007AFF"/>
+                                        <stop offset="100%" stop-color="#5856D6"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <span class="logo-text">ChartMaster</span>
+                        <span class="logo-ai">AI</span>
+                    </div>
+                    <p class="footer-description">Professional chart analysis powered by advanced AI technology.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="#features">Features</a>
+                        <a href="#demo">Demo</a>
+                        <a href="#pricing">Pricing</a>
+                        <a href="/api">API</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <a href="/about">About</a>
+                        <a href="/blog">Blog</a>
+                        <a href="/careers">Careers</a>
+                        <a href="/contact">Contact</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <a href="/help">Help Center</a>
+                        <a href="/docs">Documentation</a>
+                        <a href="/status">Status</a>
+                        <a href="/security">Security</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <a href="/privacy">Privacy</a>
+                        <a href="/terms">Terms</a>
+                        <a href="/cookies">Cookies</a>
+                        <a href="/gdpr">GDPR</a>
+                    </div>
+                </div>
             </div>
-            <div class="footer-copyright">
-                © 2024 ChartMaster AI. All rights reserved.
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; 2024 ChartMaster AI. All rights reserved.</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/>
+                            <rect x="2" y="9" width="4" height="12"/>
+                            <circle cx="4" cy="4" r="2"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- Upgrade Modal -->
-    <div id="upgradeModal" class="upgrade-modal" style="display: none;">
-        <div class="modal-overlay" onclick="closeUpgradeModal()"></div>
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeUpgradeModal()">×</button>
-            
-            <h2 class="modal-title">Unlock ChartMaster Plus</h2>
-            <p class="modal-subtitle">Get unlimited ChartMaster</p>
-            
-            <div class="modal-features">
-                <div class="feature-item">
-                    <div class="feature-icon-circle">♾️</div>
-                    <div class="feature-content">
-                        <h3>Unlimited Analyses</h3>
-                        <p>Create as many chart analyses as you want, and get up to 100 charts analyzed per day.</p>
-                    </div>
-                </div>
-                
-                <div class="feature-item">
-                    <div class="feature-icon-circle">🧠</div>
-                    <div class="feature-content">
-                        <h3>Improved AI Models</h3>
-                        <p>Unlock advanced AI models, create your own trading strategies and more!.</p>
-                    </div>
-                </div>
-                
-                <div class="feature-item">
-                    <div class="feature-icon-circle">📊</div>
-                    <div class="feature-content">
-                        <h3>Multiple Chart Upload</h3>
-                        <p>Analyze multiple charts at once. All formats supported!</p>
-                    </div>
-                </div>
-                
-                <div class="feature-item">
-                    <div class="feature-icon-circle">🏷️</div>
-                    <div class="feature-content">
-                        <h3>Organize Your Analyses</h3>
-                        <p>Sort and filter your analyses with ease by adding custom tags.</p>
-                    </div>
-                </div>
-                
-                <div class="feature-item">
-                    <div class="feature-icon-circle">🔗</div>
-                    <div class="feature-content">
-                        <h3>Integrations</h3>
-                        <p>Connect ChartMaster & Zapier to send your analyses anywhere you want!</p>
-                    </div>
-                </div>
-                
-                <div class="feature-item">
-                    <div class="feature-icon-circle">💬</div>
-                    <div class="feature-content">
-                        <h3>Trading Alerts</h3>
-                        <p>Get real-time alerts when patterns are detected on your watched charts!</p>
-                    </div>
-                </div>
-            </div>
-            
-            <button class="modal-cta-btn" onclick="showPricingModal()">
-                <span>✨</span> Get ChartMaster +
-            </button>
-            
-            <p class="modal-trust">
-                <span>🛡️</span> Trusted by +10,000 happy traders
-            </p>
-        </div>
-    </div>
-
-    <!-- Pricing Modal -->
-    <div id="pricingModal" class="pricing-modal" style="display: none;">
-        <div class="modal-overlay" onclick="closePricingModal()"></div>
-        <div class="pricing-modal-content">
-            <button class="modal-close" onclick="closePricingModal()">×</button>
-            
-            <h2 class="pricing-modal-title">Choose your plan</h2>
-            
-            <div class="pricing-options">
-                <!-- Standard Plans -->
-                <div class="pricing-option-group">
-                    <h3 class="plan-group-title">ChartMaster AI</h3>
-                    
-                    <div class="pricing-option featured">
-                        <div class="save-badge">★ Save 16%</div>
-                        <div class="pricing-option-content">
-                            <div class="pricing-radio">
-                                <input type="radio" id="yearly" name="plan" value="yearly" checked>
-                                <label for="yearly">
-                                    <div class="price-info">
-                                        <span class="price">$197 / year</span>
-                                        <span class="price-detail">= $16/month, billed annually</span>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="pricing-option">
-                        <div class="pricing-option-content">
-                            <div class="pricing-radio">
-                                <input type="radio" id="monthly" name="plan" value="monthly">
-                                <label for="monthly">
-                                    <div class="price-info">
-                                        <span class="price">$19.97 / month</span>
-                                        <span class="price-detail">= $19.97/month billed monthly</span>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Professional Plans -->
-                <div class="pricing-option-group">
-                    <h3 class="plan-group-title">ChartMaster AI Professional Pro</h3>
-                    
-                    <div class="pricing-option featured-pro">
-                        <div class="save-badge">★ Save 16%</div>
-                        <div class="pricing-option-content">
-                            <div class="pricing-radio">
-                                <input type="radio" id="yearly-pro" name="plan" value="yearly-pro">
-                                <label for="yearly-pro">
-                                    <div class="price-info">
-                                        <span class="price">$394 / year</span>
-                                        <span class="price-detail">= $32/month, billed annually</span>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="pricing-option">
-                        <div class="pricing-option-content">
-                            <div class="pricing-radio">
-                                <input type="radio" id="monthly-pro" name="plan" value="monthly-pro">
-                                <label for="monthly-pro">
-                                    <div class="price-info">
-                                        <span class="price">$39.94 / month</span>
-                                        <span class="price-detail">= $39.94/month billed monthly</span>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="pricing-modal-footer">
-                <div class="trust-logos">
-                    <span class="trust-logo">Medium</span>
-                    <span class="trust-logo">INDIE HACKERS</span>
-                    <span class="trust-logo">Foundr</span>
-                </div>
-                
-                <div class="trust-rating">
-                    Trusted by +10,000 happy users ⭐⭐⭐⭐⭐
-                </div>
-                
-                <button class="start-trial-btn" onclick="event.preventDefault(); startDirectTrialFromModal()">
-                    <span>✨</span> Start Free Trial
-                </button>
-                
-                <p class="cancel-text">🔒 Cancel anytime</p>
-            </div>
-        </div>
-    </div>
-
-<!-- JavaScript Files -->
-<script src="js/main.js"></script>
-<script src="js/animations.js"></script>
-<script src="js/interactions.js"></script>
-
-<script>
-// Initialize Paddle
-let paddleInitialized = false;
-function initializePaddle() {
-    if (typeof Paddle !== 'undefined' && !paddleInitialized) {
-        Paddle.Environment.set('sandbox');
-        Paddle.Initialize({ 
-            token: 'test_2e85d4afc240560722cc04b5317',
-            eventCallback: function(data) {
-                console.log('Paddle Event:', data);
-            }
-        });
-        paddleInitialized = true;
-        console.log('Paddle initialized successfully');
-    }
-}
-
-// Warte bis Paddle geladen ist
-if (typeof Paddle !== 'undefined') {
-    initializePaddle();
-} else {
-    document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(initializePaddle, 1000);
-    });
-}
-
-// Prevent double clicks
-let isProcessingCheckout = false;
-
-// Paddle Checkout mit Paddle.js öffnen
-async function openPaddleCheckout(plan) {
-    if (!paddleInitialized) {
-        alert('Paddle wird noch geladen, bitte versuchen Sie es in wenigen Sekunden erneut.');
-        initializePaddle();
-        return;
-    }
-    
-    if (isProcessingCheckout) {
-        console.log('Checkout already in progress');
-        return;
-    }
-    
-    isProcessingCheckout = true;
-    
-    const btn = event.target.closest('button');
-    if (!btn) {
-        isProcessingCheckout = false;
-        return;
-    }
-    
-    const originalContent = btn.innerHTML;
-    btn.disabled = true;
-    btn.innerHTML = '<span>⏳</span> Lade...';
-    
-    try {
-        // Product mapping
-        const PADDLE_PRODUCTS = {
-            'monthly': 'pro_01jxtzxnac66848hqjhwy93cfv',
-            'yearly': 'pro_01jxtzwdk46yknxdjzdrt7wfg1',
-            'monthly-pro': 'pro_01jxtzycder9tphs7kxsczvydf',
-            'yearly-pro': 'pro_01jxtzyvghphnpg1qpxxmfyf1m'
-        };
-        
-        const productId = PADDLE_PRODUCTS[plan];
-        
-        if (!productId) {
-            throw new Error('Invalid plan selected');
-        }
-        
-        // Öffne Paddle Checkout
-        Paddle.Checkout.open({
-            product: productId,
-            vendorId: 21659,
-            success: (data) => {
-                console.log('Checkout successful:', data);
-                window.location.href = '/welcome?session_id=' + data.checkout.id;
-            },
-            closeCallback: () => {
-                console.log('Checkout closed');
-                btn.disabled = false;
-                btn.innerHTML = originalContent;
-                isProcessingCheckout = false;
-            }
-        });
-        
-    } catch (error) {
-        console.error('Error:', error);
-        alert('Fehler beim Öffnen des Zahlungsformulars: ' + error.message);
-        btn.disabled = false;
-        btn.innerHTML = originalContent;
-        isProcessingCheckout = false;
-    }
-}
-
-// Wrapper für alte Funktion
-async function startDirectCheckout(plan) {
-    openPaddleCheckout(plan);
-}
-
-// Start trial from pricing modal
-async function startDirectTrialFromModal() {
-    const selectedPlan = document.querySelector('input[name="plan"]:checked').value;
-    closePricingModal();
-    openPaddleCheckout(selectedPlan);
-}
-
-// Show/Hide Upgrade Modal
-function showUpgradeModal() {
-    const modal = document.getElementById('upgradeModal');
-    if (modal) {
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    }
-}
-
-function closeUpgradeModal() {
-    const modal = document.getElementById('upgradeModal');
-    if (modal) {
-        modal.style.display = 'none';
-        document.body.style.overflow = '';
-    }
-}
-
-// Show/Hide Pricing Modal
-function showPricingModal() {
-    closeUpgradeModal();
-    const modal = document.getElementById('pricingModal');
-    if (modal) {
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    }
-}
-
-function closePricingModal() {
-    const modal = document.getElementById('pricingModal');
-    if (modal) {
-        modal.style.display = 'none';
-        document.body.style.overflow = '';
-    }
-}
-
-// Toggle FAQ items
-function toggleFAQ(element) {
-    const faqItem = element.parentElement;
-    const wasActive = faqItem.classList.contains('active');
-    
-    document.querySelectorAll('.faq-item').forEach(item => {
-        item.classList.remove('active');
-    });
-    
-    if (!wasActive) {
-        faqItem.classList.add('active');
-    }
-}
-
-// Toggle Step items
-function toggleStep(element) {
-    const wasActive = element.classList.contains('active');
-    
-    document.querySelectorAll('.step').forEach(step => {
-        if (step !== element) {
-            step.classList.remove('active');
-        }
-    });
-    
-    if (!wasActive) {
-        element.classList.add('active');
-    } else {
-        element.classList.remove('active');
-    }
-}
-
-// Initialize on DOM load
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('ChartMaster AI with Paddle loaded');
-    isProcessingCheckout = false;
-});
-
-// Close modals on ESC key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        closeUpgradeModal();
-        closePricingModal();
-    }
-});
-
-// ENHANCED DEMO FUNCTIONS - Updated to match dashboard
-// Parse analysis response with better error handling
-function parseAnalysisResponse(text) {
-    try {
-        // Try to extract JSON from the response
-        const jsonMatch = text.match(/\{[\s\S]*\}/);
-        const jsonText = jsonMatch ? jsonMatch[0] : text;
-        
-        const parsed = JSON.parse(jsonText);
-        
-        // Validate and sanitize fields
-        return {
-            sentiment: ['bullish', 'bearish', 'neutral'].includes(parsed.sentiment) 
-                ? parsed.sentiment 
-                : 'neutral',
-            confidence: typeof parsed.confidence === 'number' 
-                ? Math.max(0, Math.min(100, parsed.confidence))
-                : 50,
-            patterns: Array.isArray(parsed.patterns) 
-                ? parsed.patterns.filter(p => typeof p === 'string')
-                : [],
-            recommendation: typeof parsed.recommendation === 'string' 
-                ? parsed.recommendation 
-                : 'No recommendation available',
-            analysis: typeof parsed.analysis === 'string' 
-                ? parsed.analysis 
-                : 'No detailed analysis available',
-            support: Array.isArray(parsed.support) ? parsed.support : [],
-            resistance: Array.isArray(parsed.resistance) ? parsed.resistance : [],
-            entry: parsed.entry || null,
-            stopLoss: parsed.stopLoss || null,
-            takeProfit: Array.isArray(parsed.takeProfit) ? parsed.takeProfit : []
-        };
-    } catch (error) {
-        console.error('JSON parsing error:', error);
-        return {
-            sentiment: 'neutral',
-            confidence: 50,
-            patterns: [],
-            recommendation: 'Unable to provide recommendation due to analysis error',
-            analysis: `Error analyzing chart: ${text}`,
-            support: [],
-            resistance: []
-        };
-    }
-}
-
-// Enhanced analyzeChart function to match dashboard
-async function analyzeChart() {
-    // Check if user has remaining scans
-    if (!canUserScan()) {
-        showUpgradeModal();
-        return;
-    }
-    
-    if (!window.chartImageData) {
-        alert('Please upload a chart first');
-        return;
-    }
-    
-    // Hide all states
-    document.getElementById('demoContent').style.display = 'none';
-    document.getElementById('chartInfoInputs').style.display = 'none';
-    
-    // Show loading state
-    document.getElementById('loadingState').style.display = 'block';
-    
-    // Start loading messages
-    loadingMessageIndex = 0;
-    updateLoadingMessage();
-    loadingInterval = setInterval(updateLoadingMessage, 2000);
-    
-    try {
-        // Get optional inputs including new style selector
-        const symbol = document.getElementById('symbolInput').value;
-        const timeframe = document.getElementById('timeframeInput').value;
-        const notes = document.getElementById('notesInput').value;
-        const style = document.getElementById('analysisStyleInput').value;
-        
-        const stylePrompts = {
-            'technical': 'Provide comprehensive technical analysis',
-            'price-action': 'Focus on price action and market structure',
-            'elliott-wave': 'Apply Elliott Wave theory',
-            'fibonacci': 'Include Fibonacci retracement and extension levels',
-            'signal': 'Generate clear trading signals with entry, stop-loss, and take-profit'
-        };
-        
-        const prompt = `You are a professional technical analyst. Analyze the trading chart and respond in this exact JSON format:
-
-{
-  "sentiment": "bullish" or "bearish" or "neutral",
-  "confidence": <number 0-100>,
-  "recommendation": "<clear trading recommendation>",
-  "analysis": "<detailed technical analysis>",
-  "patterns": ["<pattern1>", "<pattern2>", ...],
-  "support": [<price1>, <price2>, ...],
-  "resistance": [<price1>, <price2>, ...],
-  "entry": <suggested entry price or null>,
-  "stopLoss": <stop loss price or null>,
-  "takeProfit": [<TP1>, <TP2>, ...]
-}
-
-Analysis style: ${stylePrompts[style] || stylePrompts['technical']}
-${symbol ? `Symbol: ${symbol}` : ''}
-${timeframe ? `Timeframe: ${timeframe}` : ''}
-${notes ? `Additional notes: ${notes}` : ''}
-
-Be specific with price levels when visible. If you cannot determine exact prices, provide relative levels or state "Unable to determine exact levels from chart".`;
-
-        // Make actual OpenAI API call
-        const response = await fetch('https://api.openai.com/v1/chat/completions', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': ``
-            },
-            body: JSON.stringify({
-                model: "gpt-4o",
-                messages: [{
-                    role: "user",
-                    content: [
-                        { type: "text", text: prompt },
-                        { 
-                            type: "image_url", 
-                            image_url: { 
-                                url: window.chartImageData,
-                                detail: "high"
-                            } 
-                        }
-                    ]
-                }],
-                max_tokens: 1500,
-                temperature: 0.3
-            })
-        });
-        
-        if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.error?.message || 'API request failed');
-        }
-        
-        const data = await response.json();
-        const analysisText = data.choices[0]?.message?.content;
-        
-        if (!analysisText) {
-            throw new Error('No response received from AI');
-        }
-        
-        const analysis = parseAnalysisResponse(analysisText);
-        
-        // Show results
-        displayAnalysisResults(analysis);
-        
-        // Update scan count after successful analysis
-        updateScanCount();
-        updateScanCounter();
-        
-    } catch (error) {
-        console.error('Analysis error:', error);
-        alert('Failed to analyze chart: ' + error.message);
-        resetDemo();
-    } finally {
-        clearInterval(loadingInterval);
-    }
-}
-
-// Enhanced display results to show key levels
-function displayAnalysisResults(analysis) {
-    // Hide loading, show results
-    document.getElementById('loadingState').style.display = 'none';
-    document.getElementById('resultState').style.display = 'block';
-    
-    // Update sentiment
-    const sentimentIcon = document.getElementById('sentimentIcon');
-    sentimentIcon.textContent = analysis.sentiment === 'bullish' ? '📈' : 
-                               analysis.sentiment === 'bearish' ? '📉' : '➡️';
-    
-    // Update sentiment text
-    const sentimentText = document.getElementById('sentimentText');
-    sentimentText.textContent = analysis.sentiment.toUpperCase();
-    sentimentText.className = `sentiment-value ${analysis.sentiment}`;
-    
-    // Update confidence
-    document.getElementById('confidenceText').textContent = `${analysis.confidence}% Confidence`;
-    document.getElementById('confidenceFill').style.width = `${analysis.confidence}%`;
-    
-    // Update recommendation with trade levels if available
-    let recommendationHTML = `<p>${analysis.recommendation}</p>`;
-    if (analysis.entry || analysis.stopLoss || (analysis.takeProfit && analysis.takeProfit.length > 0)) {
-        recommendationHTML += '<div class="trade-levels-demo">';
-        if (analysis.entry) {
-            recommendationHTML += `<div class="level-item"><span class="level-label">Entry:</span> <span class="level-value">${analysis.entry}</span></div>`;
-        }
-        if (analysis.stopLoss) {
-            recommendationHTML += `<div class="level-item"><span class="level-label">Stop Loss:</span> <span class="level-value stop-loss">${analysis.stopLoss}</span></div>`;
-        }
-        if (analysis.takeProfit && analysis.takeProfit.length > 0) {
-            recommendationHTML += `<div class="level-item"><span class="level-label">Take Profit:</span> <span class="level-value take-profit">${analysis.takeProfit.join(', ')}</span></div>`;
-        }
-        recommendationHTML += '</div>';
-    }
-    document.getElementById('recommendationText').innerHTML = recommendationHTML;
-    
-    // Update analysis
-    document.getElementById('analysisText').textContent = analysis.analysis;
-    
-    // Update patterns
-    if (analysis.patterns && analysis.patterns.length > 0) {
-        const patternsSection = document.getElementById('patternsSection');
-        const patternsList = document.getElementById('patternsList');
-        
-        patternsSection.style.display = 'block';
-        patternsList.innerHTML = analysis.patterns
-            .map(pattern => `<div class="pattern-chip">${pattern}</div>`)
-            .join('');
-    } else {
-        document.getElementById('patternsSection').style.display = 'none';
-    }
-    
-    // Update key levels (NEW)
-    if ((analysis.support && analysis.support.length > 0) || (analysis.resistance && analysis.resistance.length > 0)) {
-        const levelsSection = document.getElementById('levelsSection');
-        const keyLevelsList = document.getElementById('keyLevelsList');
-        
-        levelsSection.style.display = 'block';
-        
-        let levelsHTML = '';
-        if (analysis.support && analysis.support.length > 0) {
-            levelsHTML += '<div class="level-group-demo"><h6>Support:</h6>';
-            levelsHTML += analysis.support.map(level => `<span class="level-tag support">${level}</span>`).join('');
-            levelsHTML += '</div>';
-        }
-        if (analysis.resistance && analysis.resistance.length > 0) {
-            levelsHTML += '<div class="level-group-demo"><h6>Resistance:</h6>';
-            levelsHTML += analysis.resistance.map(level => `<span class="level-tag resistance">${level}</span>`).join('');
-            levelsHTML += '</div>';
-        }
-        
-        keyLevelsList.innerHTML = levelsHTML;
-    } else {
-        document.getElementById('levelsSection').style.display = 'none';
-    }
-}
-</script>
-
-<!-- Additional CSS for new elements -->
-<style>
-/* Demo Trade Levels */
-.trade-levels-demo {
-    display: flex;
-    gap: 20px;
-    margin-top: 12px;
-    padding: 12px;
-    background: rgba(59, 130, 246, 0.05);
-    border-radius: 8px;
-    font-size: 14px;
-}
-
-.level-item {
-    display: flex;
-    gap: 8px;
-}
-
-.level-label {
-    color: #6b7280;
-    font-size: 13px;
-}
-
-.level-value {
-    font-weight: 600;
-    color: #111827;
-}
-
-.level-value.stop-loss {
-    color: #ef4444;
-}
-
-.level-value.take-profit {
-    color: #10b981;
-}
-
-/* Key Levels Container */
-.key-levels-container {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.level-group-demo {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.level-group-demo h6 {
-    font-size: 13px;
-    font-weight: 600;
-    color: #6b7280;
-    margin: 0;
-}
-
-.level-tag {
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 500;
-    margin-right: 6px;
-}
-
-.level-tag.support {
-    background: #dcfce7;
-    color: #15803d;
-}
-
-.level-tag.resistance {
-    background: #fee2e2;
-    color: #991b1b;
-}
-
-/* Analysis Style Input */
-#analysisStyleInput {
-    width: 100%;
-    padding: 12px 16px;
-    margin-top: 12px;
-    border: 2px solid #e5e7eb;
-    border-radius: 8px;
-    font-size: 14px;
-    background: white;
-    cursor: pointer;
-}
-
-#analysisStyleInput:focus {
-    outline: none;
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-}
-
-/* Dev Mode Indicator */
-.scan-counter-inline.dev-mode {
-    background: #8b5cf6;
-    color: white;
-    padding: 6px 12px;
-    border-radius: 20px;
-}
-
-.scan-counter-inline.warning .counter-number {
-    color: #f59e0b;
-}
-
-.scan-counter-inline.exhausted .counter-number {
-    color: #ef4444;
-}
-</style>
-
-<script>
-// Debug Paddle
-setTimeout(() => {
-    console.log('=== PADDLE DEBUG ===');
-    console.log('Paddle loaded?', typeof Paddle !== 'undefined');
-    console.log('Paddle object:', window.Paddle);
-    console.log('paddleInitialized?', window.paddleInitialized);
-    
-    // Test Paddle direkt
-    if (typeof Paddle !== 'undefined') {
-        console.log('Paddle.Checkout available?', Paddle.Checkout);
-        console.log('Paddle Environment:', Paddle.Environment);
-    }
-}, 3000);
-</script>
-
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/interactions.js"></script>
+    <script src="js/animation.js"></script>
 </body>
 </html>
