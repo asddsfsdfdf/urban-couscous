@@ -1,9 +1,11 @@
-// Main JavaScript for ChartMaster AI Landing Page
+// Main JavaScript for ChartMaster AI Landing Page with Professional Animations
 
 // Global variables
 let isYearlyPricing = false;
 let demoScansUsed = 0;
 const maxDemoScans = 2;
+let heroAnimationInterval;
+let particleSystem;
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
@@ -12,6 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initializePricingToggle();
     initializeScrollEffects();
     initializeDemoFunctionality();
+    initializeParticleSystem();
+    initializeCounterAnimations();
     
     console.log('ChartMaster AI initialized successfully');
 });
@@ -55,29 +59,326 @@ function toggleMobileMenu() {
     toggle.classList.toggle('active');
 }
 
-// Hero demo functionality
+// Hero demo functionality with professional animations
 function initializeHeroDemo() {
-    const demoContent = document.getElementById('demoContent');
-    const uploadState = document.getElementById('uploadState');
-    const analysisPreview = document.getElementById('analysisPreview');
+    const heroDemo = document.getElementById('heroDemo');
     
-    // Auto-cycle demo states
-    let demoState = 0;
-    const demoStates = ['upload', 'analysis'];
-    
-    setInterval(() => {
-        if (demoState === 0) {
-            // Show analysis preview
-            uploadState.style.display = 'none';
-            analysisPreview.style.display = 'block';
-            demoState = 1;
-        } else {
-            // Show upload state
-            analysisPreview.style.display = 'none';
-            uploadState.style.display = 'block';
-            demoState = 0;
+    const demoStates = [
+        {
+            type: 'upload',
+            content: `
+                <div class="hero-upload-state">
+                    <div class="upload-animation">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                            <polyline points="17 8 12 3 7 8"/>
+                            <line x1="12" y1="3" x2="12" y2="15"/>
+                        </svg>
+                        <div class="upload-rings">
+                            <div class="ring ring-1"></div>
+                            <div class="ring ring-2"></div>
+                            <div class="ring ring-3"></div>
+                        </div>
+                    </div>
+                    <h3>Drop Chart Here</h3>
+                    <p>AI analysis in seconds</p>
+                </div>
+            `
+        },
+        {
+            type: 'analyzing',
+            content: `
+                <div class="hero-analyzing-state">
+                    <div class="ai-brain-animation">
+                        <div class="brain-core">🧠</div>
+                        <div class="neural-network">
+                            <div class="neuron neuron-1"></div>
+                            <div class="neuron neuron-2"></div>
+                            <div class="neuron neuron-3"></div>
+                            <div class="neuron neuron-4"></div>
+                            <div class="connection connection-1"></div>
+                            <div class="connection connection-2"></div>
+                            <div class="connection connection-3"></div>
+                        </div>
+                    </div>
+                    <h3>AI Analyzing...</h3>
+                    <div class="analysis-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                        <p class="progress-text">Detecting patterns...</p>
+                    </div>
+                </div>
+            `
+        },
+        {
+            type: 'results',
+            content: `
+                <div class="hero-results-state">
+                    <div class="sentiment-display bullish">
+                        <div class="sentiment-icon">📈</div>
+                        <div class="sentiment-info">
+                            <div class="sentiment-text">BULLISH</div>
+                            <div class="confidence-score">87% Confidence</div>
+                        </div>
+                    </div>
+                    <div class="key-insights">
+                        <div class="insight-item">
+                            <span class="insight-label">Pattern:</span>
+                            <span class="insight-value">Ascending Triangle</span>
+                        </div>
+                        <div class="insight-item">
+                            <span class="insight-label">Target:</span>
+                            <span class="insight-value">$68,500</span>
+                        </div>
+                    </div>
+                </div>
+            `
         }
-    }, 4000);
+    ];
+    
+    let currentState = 0;
+    
+    function updateHeroDemo() {
+        heroDemo.innerHTML = demoStates[currentState].content;
+        currentState = (currentState + 1) % demoStates.length;
+    }
+    
+    // Initial state
+    updateHeroDemo();
+    
+    // Cycle through states
+    heroAnimationInterval = setInterval(updateHeroDemo, 4000);
+    
+    // Add CSS for hero demo animations
+    addHeroDemoStyles();
+}
+
+// Add CSS styles for hero demo
+function addHeroDemoStyles() {
+    const styles = `
+        <style>
+            .hero-upload-state, .hero-analyzing-state, .hero-results-state {
+                text-align: center;
+                animation: fadeInUp 0.6s ease-out;
+            }
+            
+            @keyframes fadeInUp {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            
+            .upload-animation {
+                position: relative;
+                margin-bottom: 24px;
+            }
+            
+            .upload-rings {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            
+            .ring {
+                position: absolute;
+                border: 2px solid;
+                border-radius: 50%;
+                animation: ringPulse 2s ease-out infinite;
+            }
+            
+            .ring-1 {
+                width: 80px;
+                height: 80px;
+                border-color: #FF6B6B;
+                animation-delay: 0s;
+            }
+            
+            .ring-2 {
+                width: 100px;
+                height: 100px;
+                border-color: #4ECDC4;
+                animation-delay: 0.5s;
+            }
+            
+            .ring-3 {
+                width: 120px;
+                height: 120px;
+                border-color: #A8E6CF;
+                animation-delay: 1s;
+            }
+            
+            @keyframes ringPulse {
+                0% { transform: translate(-50%, -50%) scale(0.8); opacity: 1; }
+                100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+            }
+            
+            .ai-brain-animation {
+                position: relative;
+                width: 120px;
+                height: 120px;
+                margin: 0 auto 24px;
+            }
+            
+            .brain-core {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 3rem;
+                z-index: 3;
+                animation: brainPulse 2s ease-in-out infinite;
+            }
+            
+            @keyframes brainPulse {
+                0%, 100% { transform: translate(-50%, -50%) scale(1); }
+                50% { transform: translate(-50%, -50%) scale(1.1); }
+            }
+            
+            .neural-network {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
+            
+            .neuron {
+                position: absolute;
+                width: 8px;
+                height: 8px;
+                background: #4ECDC4;
+                border-radius: 50%;
+                animation: neuronPulse 1.5s ease-in-out infinite;
+            }
+            
+            .neuron-1 { top: 20%; left: 20%; animation-delay: 0s; }
+            .neuron-2 { top: 20%; right: 20%; animation-delay: 0.3s; }
+            .neuron-3 { bottom: 20%; left: 20%; animation-delay: 0.6s; }
+            .neuron-4 { bottom: 20%; right: 20%; animation-delay: 0.9s; }
+            
+            @keyframes neuronPulse {
+                0%, 100% { opacity: 0.3; transform: scale(1); }
+                50% { opacity: 1; transform: scale(1.5); }
+            }
+            
+            .connection {
+                position: absolute;
+                height: 2px;
+                background: linear-gradient(90deg, #4ECDC4, #A8E6CF);
+                animation: connectionFlow 2s ease-in-out infinite;
+            }
+            
+            .connection-1 {
+                top: 25%;
+                left: 25%;
+                width: 50%;
+                transform: rotate(0deg);
+            }
+            
+            .connection-2 {
+                top: 50%;
+                left: 25%;
+                width: 50%;
+                transform: rotate(90deg);
+            }
+            
+            .connection-3 {
+                bottom: 25%;
+                left: 25%;
+                width: 50%;
+                transform: rotate(45deg);
+            }
+            
+            @keyframes connectionFlow {
+                0%, 100% { opacity: 0.3; }
+                50% { opacity: 1; }
+            }
+            
+            .analysis-progress {
+                margin-top: 16px;
+            }
+            
+            .progress-bar {
+                width: 200px;
+                height: 4px;
+                background: rgba(255, 255, 255, 0.2);
+                border-radius: 2px;
+                overflow: hidden;
+                margin: 0 auto 8px;
+            }
+            
+            .progress-fill {
+                height: 100%;
+                background: linear-gradient(90deg, #4ECDC4, #A8E6CF);
+                border-radius: 2px;
+                animation: progressFlow 3s ease-in-out infinite;
+            }
+            
+            @keyframes progressFlow {
+                0% { width: 0%; }
+                50% { width: 70%; }
+                100% { width: 100%; }
+            }
+            
+            .progress-text {
+                font-size: 14px;
+                color: #666;
+                margin: 0;
+            }
+            
+            .sentiment-display {
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                padding: 16px;
+                background: rgba(16, 185, 129, 0.1);
+                border: 1px solid rgba(16, 185, 129, 0.2);
+                border-radius: 12px;
+                margin-bottom: 16px;
+            }
+            
+            .sentiment-icon {
+                font-size: 2rem;
+            }
+            
+            .sentiment-text {
+                font-size: 1.25rem;
+                font-weight: 700;
+                color: #10B981;
+            }
+            
+            .confidence-score {
+                font-size: 0.875rem;
+                color: #666;
+            }
+            
+            .key-insights {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .insight-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 8px 12px;
+                background: rgba(255, 255, 255, 0.5);
+                border-radius: 8px;
+            }
+            
+            .insight-label {
+                font-weight: 500;
+                color: #666;
+            }
+            
+            .insight-value {
+                font-weight: 600;
+                color: #333;
+            }
+        </style>
+    `;
+    
+    document.head.insertAdjacentHTML('beforeend', styles);
 }
 
 // Pricing toggle functionality
@@ -107,7 +408,7 @@ function togglePricing() {
     });
 }
 
-// Scroll effects and animations
+// Advanced scroll effects and animations
 function initializeScrollEffects() {
     // Intersection Observer for animations
     const observerOptions = {
@@ -125,6 +426,8 @@ function initializeScrollEffects() {
                     animateFeatureCard(entry.target);
                 } else if (entry.target.classList.contains('pricing-card')) {
                     animatePricingCard(entry.target);
+                } else if (entry.target.classList.contains('demo-feature')) {
+                    animateDemoFeature(entry.target);
                 }
             }
         });
@@ -132,11 +435,22 @@ function initializeScrollEffects() {
     
     // Observe elements for animation
     const elementsToAnimate = document.querySelectorAll(
-        '.feature-card, .pricing-card, .demo-feature, .trust-item'
+        '.feature-card, .pricing-card, .demo-feature, .trust-item, .section-badge'
     );
     
     elementsToAnimate.forEach(element => {
         observer.observe(element);
+    });
+    
+    // Parallax effect for floating elements
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const floatingElements = document.querySelectorAll('.float-element');
+        
+        floatingElements.forEach((element, index) => {
+            const speed = 0.1 + (index * 0.05);
+            element.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.05}deg)`;
+        });
     });
 }
 
@@ -164,6 +478,137 @@ function animatePricingCard(card) {
     }
 }
 
+// Demo feature animation
+function animateDemoFeature(feature) {
+    const icon = feature.querySelector('.demo-feature-icon');
+    if (icon) {
+        setTimeout(() => {
+            icon.style.transform = 'scale(1.2) rotate(10deg)';
+            setTimeout(() => {
+                icon.style.transform = 'scale(1) rotate(0deg)';
+            }, 400);
+        }, 100);
+    }
+}
+
+// Counter animations
+function initializeCounterAnimations() {
+    const counters = document.querySelectorAll('.stat-number[data-target]');
+    
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                counterObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    counters.forEach(counter => {
+        counterObserver.observe(counter);
+    });
+}
+
+// Animate individual counter
+function animateCounter(element) {
+    const target = parseFloat(element.getAttribute('data-target'));
+    const duration = 2000;
+    const step = target / (duration / 16);
+    let current = 0;
+    
+    const timer = setInterval(() => {
+        current += step;
+        if (current >= target) {
+            current = target;
+            clearInterval(timer);
+        }
+        
+        if (target === 98.5) {
+            element.textContent = current.toFixed(1);
+        } else {
+            element.textContent = Math.floor(current);
+        }
+    }, 16);
+}
+
+// Particle system initialization
+function initializeParticleSystem() {
+    const particleContainer = document.getElementById('particleSystem');
+    if (!particleContainer) return;
+    
+    particleSystem = {
+        particles: [],
+        container: particleContainer,
+        colors: ['#FF6B6B', '#4ECDC4', '#A8E6CF', '#FFD93D', '#FD79A8']
+    };
+    
+    // Create particles
+    for (let i = 0; i < 15; i++) {
+        createParticle();
+    }
+    
+    // Animate particles
+    animateParticles();
+}
+
+function createParticle() {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    
+    const size = Math.random() * 4 + 2;
+    const x = Math.random() * window.innerWidth;
+    const y = Math.random() * window.innerHeight;
+    const color = particleSystem.colors[Math.floor(Math.random() * particleSystem.colors.length)];
+    
+    particle.style.cssText = `
+        position: absolute;
+        width: ${size}px;
+        height: ${size}px;
+        background: ${color};
+        border-radius: 50%;
+        left: ${x}px;
+        top: ${y}px;
+        opacity: 0.6;
+        pointer-events: none;
+    `;
+    
+    particleSystem.container.appendChild(particle);
+    particleSystem.particles.push({
+        element: particle,
+        x: x,
+        y: y,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        life: Math.random() * 200 + 100
+    });
+}
+
+function animateParticles() {
+    particleSystem.particles.forEach((particle, index) => {
+        particle.x += particle.vx;
+        particle.y += particle.vy;
+        particle.life--;
+        
+        // Wrap around screen
+        if (particle.x < 0) particle.x = window.innerWidth;
+        if (particle.x > window.innerWidth) particle.x = 0;
+        if (particle.y < 0) particle.y = window.innerHeight;
+        if (particle.y > window.innerHeight) particle.y = 0;
+        
+        particle.element.style.left = particle.x + 'px';
+        particle.element.style.top = particle.y + 'px';
+        
+        // Remove dead particles
+        if (particle.life <= 0) {
+            particle.element.remove();
+            particleSystem.particles.splice(index, 1);
+            createParticle(); // Create new particle
+        }
+    });
+    
+    requestAnimationFrame(animateParticles);
+}
+
 // Demo functionality
 function initializeDemoFunctionality() {
     updateDemoCounter();
@@ -179,19 +624,22 @@ function initializeDemoFunctionality() {
 function setupDragAndDrop(uploadZone) {
     uploadZone.addEventListener('dragover', (e) => {
         e.preventDefault();
-        uploadZone.style.borderColor = 'var(--primary-blue)';
-        uploadZone.style.background = 'rgba(0, 122, 255, 0.05)';
+        uploadZone.style.borderColor = '#4ECDC4';
+        uploadZone.style.background = 'rgba(78, 205, 196, 0.05)';
+        uploadZone.style.transform = 'scale(1.02)';
     });
     
     uploadZone.addEventListener('dragleave', () => {
-        uploadZone.style.borderColor = 'var(--gray-300)';
-        uploadZone.style.background = 'rgba(255, 255, 255, 0.5)';
+        uploadZone.style.borderColor = '';
+        uploadZone.style.background = '';
+        uploadZone.style.transform = '';
     });
     
     uploadZone.addEventListener('drop', (e) => {
         e.preventDefault();
-        uploadZone.style.borderColor = 'var(--gray-300)';
-        uploadZone.style.background = 'rgba(255, 255, 255, 0.5)';
+        uploadZone.style.borderColor = '';
+        uploadZone.style.background = '';
+        uploadZone.style.transform = '';
         
         const file = e.dataTransfer.files[0];
         if (file && file.type.startsWith('image/')) {
@@ -241,7 +689,7 @@ function showDemoLoading() {
                 <div class="loading-spinner"></div>
                 <div class="loading-brain">🧠</div>
             </div>
-            <h3>Analyzing Chart...</h3>
+            <h3>AI Analyzing Chart...</h3>
             <p id="loadingMessage">${loadingMessages[0]}</p>
             <div class="progress-bar">
                 <div class="progress-fill" id="progressFill"></div>
@@ -312,16 +760,23 @@ function resetDemo() {
     const demoInterface = document.getElementById('demoInterface');
     
     demoInterface.innerHTML = `
-        <div class="upload-zone" onclick="document.getElementById('demoChartInput').click()">
+        <div class="upload-zone glass-morphism" onclick="document.getElementById('demoChartInput').click()">
             <input type="file" id="demoChartInput" accept="image/*" style="display: none;" onchange="handleDemoChartUpload(event)">
             <div class="upload-content">
-                <div class="upload-icon-large">📊</div>
+                <div class="upload-icon-large">
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                        <polyline points="17 8 12 3 7 8"/>
+                        <line x1="12" y1="3" x2="12" y2="15"/>
+                    </svg>
+                    <div class="upload-pulse"></div>
+                </div>
                 <h3>Drop Chart Here</h3>
                 <p>or click to browse</p>
                 <div class="supported-formats">
-                    <span>PNG</span>
-                    <span>JPG</span>
-                    <span>TradingView</span>
+                    <span class="format-badge">PNG</span>
+                    <span class="format-badge">JPG</span>
+                    <span class="format-badge">TradingView</span>
                 </div>
             </div>
         </div>
@@ -342,8 +797,8 @@ function updateDemoCounter() {
         counter.textContent = remaining;
         
         if (remaining === 0) {
-            counter.parentElement.style.color = 'var(--primary-red)';
-            counter.parentElement.innerHTML = '<span style="color: var(--primary-red);">0</span> scans remaining - <a href="/register" style="color: var(--primary-blue);">Upgrade now</a>';
+            counter.parentElement.style.color = '#FF6B6B';
+            counter.parentElement.innerHTML = '<div class="counter-icon">🔥</div><span style="color: #FF6B6B;">0</span> scans remaining - <a href="/register" style="color: #4ECDC4;">Upgrade now</a>';
         }
     }
 }
@@ -354,7 +809,7 @@ function showUpgradeModal() {
     modal.className = 'upgrade-modal';
     modal.innerHTML = `
         <div class="modal-overlay" onclick="closeUpgradeModal()"></div>
-        <div class="modal-content glass-card">
+        <div class="modal-content glass-morphism">
             <button class="modal-close" onclick="closeUpgradeModal()">×</button>
             <div class="modal-icon">🚀</div>
             <h2>Unlock Full Analysis Power</h2>
@@ -385,7 +840,7 @@ function showUpgradeModal() {
             </div>
             
             <div class="upgrade-note">
-                <span>✓ 3-day free trial • No credit card required</span>
+                <span>✓ 7-day free trial • No credit card required</span>
             </div>
         </div>
     `;
@@ -458,8 +913,8 @@ function showNotification(message, type = 'info') {
             }
             
             .notification.error {
-                border-color: var(--primary-red);
-                background: rgba(255, 59, 48, 0.1);
+                border-color: #FF6B6B;
+                background: rgba(255, 107, 107, 0.1);
             }
             
             .notification button {
@@ -518,7 +973,7 @@ function handleURLParameters() {
 // Initialize URL parameter handling
 document.addEventListener('DOMContentLoaded', handleURLParameters);
 
-// Add CSS for upgrade modal
+// Add CSS for upgrade modal and other components
 const upgradeModalStyles = `
     .upgrade-modal {
         position: fixed;
@@ -532,6 +987,8 @@ const upgradeModalStyles = `
         justify-content: center;
         opacity: 0;
         transition: opacity 0.3s ease;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
     }
     
     .modal-overlay {
@@ -540,8 +997,7 @@ const upgradeModalStyles = `
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(10px);
+        cursor: pointer;
     }
     
     .modal-content {
@@ -604,7 +1060,7 @@ const upgradeModalStyles = `
     }
     
     .upgrade-feature .feature-icon {
-        color: var(--primary-green);
+        color: var(--rainbow-green);
         font-weight: bold;
     }
     
@@ -617,7 +1073,7 @@ const upgradeModalStyles = `
     .upgrade-btn {
         flex: 1;
         padding: var(--spacing-lg);
-        border-radius: var(--radius-xl);
+        border-radius: var(--radius-full);
         font-weight: var(--font-weight-semibold);
         text-decoration: none;
         border: none;
@@ -636,17 +1092,176 @@ const upgradeModalStyles = `
     }
     
     .upgrade-btn.secondary {
-        background: var(--gray-100);
+        background: var(--glass-bg);
         color: var(--gray-700);
+        border: 1px solid var(--glass-border);
     }
     
     .upgrade-btn.secondary:hover {
-        background: var(--gray-200);
+        background: var(--glass-bg-strong);
     }
     
     .upgrade-note {
         color: var(--gray-600);
         font-size: 0.875rem;
+    }
+    
+    .demo-loading {
+        text-align: center;
+        animation: fadeIn 0.5s ease-out;
+    }
+    
+    .loading-animation {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        margin: 0 auto var(--spacing-xl);
+    }
+    
+    .loading-spinner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 3px solid var(--gray-200);
+        border-top-color: var(--rainbow-blue);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+    
+    .loading-brain {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 2.5rem;
+        animation: pulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+    
+    .demo-results {
+        animation: slideUp 0.5s ease-out;
+    }
+    
+    @keyframes slideUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .results-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: var(--spacing-xl);
+    }
+    
+    .sentiment-badge {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-md);
+        background: rgba(16, 185, 129, 0.1);
+        border: 1px solid rgba(16, 185, 129, 0.2);
+        padding: var(--spacing-md) var(--spacing-lg);
+        border-radius: var(--radius-xl);
+    }
+    
+    .sentiment-badge.bullish {
+        background: rgba(16, 185, 129, 0.1);
+        border-color: rgba(16, 185, 129, 0.2);
+    }
+    
+    .sentiment-badge .sentiment-icon {
+        font-size: 1.5rem;
+    }
+    
+    .sentiment-badge .sentiment-text {
+        font-weight: var(--font-weight-bold);
+        color: var(--rainbow-green);
+    }
+    
+    .sentiment-badge .confidence {
+        font-weight: var(--font-weight-semibold);
+        color: var(--gray-700);
+    }
+    
+    .new-analysis-btn {
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-border);
+        padding: var(--spacing-sm) var(--spacing-lg);
+        border-radius: var(--radius-lg);
+        font-weight: var(--font-weight-medium);
+        color: var(--gray-700);
+        cursor: pointer;
+        transition: all var(--transition-fast);
+    }
+    
+    .new-analysis-btn:hover {
+        background: var(--glass-bg-strong);
+    }
+    
+    .results-content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-xl);
+    }
+    
+    .result-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--spacing-md);
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: var(--radius-lg);
+    }
+    
+    .result-label {
+        font-weight: var(--font-weight-medium);
+        color: var(--gray-600);
+    }
+    
+    .result-value {
+        font-weight: var(--font-weight-semibold);
+        color: var(--gray-900);
+    }
+    
+    .results-actions {
+        display: flex;
+        gap: var(--spacing-md);
+    }
+    
+    .result-action {
+        flex: 1;
+        padding: var(--spacing-md) var(--spacing-lg);
+        border-radius: var(--radius-lg);
+        font-weight: var(--font-weight-semibold);
+        cursor: pointer;
+        transition: all var(--transition-normal);
+        border: none;
+    }
+    
+    .result-action.primary {
+        background: var(--gradient-primary);
+        color: white;
+    }
+    
+    .result-action.primary:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+    }
+    
+    .result-action.secondary {
+        background: var(--glass-bg);
+        color: var(--gray-700);
+        border: 1px solid var(--glass-border);
+    }
+    
+    .result-action.secondary:hover {
+        background: var(--glass-bg-strong);
     }
 `;
 

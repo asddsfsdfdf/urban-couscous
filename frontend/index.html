@@ -3,28 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChartMaster AI - Professional Chart Analysis</title>
+    <title>ChartMaster AI - Never Analyze Charts Wrong Again</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/responsive.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="nav-glass">
+    <nav class="nav-glass" id="mainNav">
         <div class="nav-container">
             <div class="nav-brand">
                 <div class="logo-container">
                     <div class="logo-icon">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                            <path d="M3 3v18h18" stroke="url(#logoGradient)" stroke-width="2" stroke-linecap="round"/>
-                            <path d="M7 14l4-4 4 4 4-4" stroke="url(#logoGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <rect x="3" y="10" width="4" height="11" rx="1" fill="url(#logoGradient1)"/>
+                            <rect x="10" y="3" width="4" height="18" rx="1" fill="url(#logoGradient2)"/>
+                            <rect x="17" y="7" width="4" height="14" rx="1" fill="url(#logoGradient3)"/>
                             <defs>
-                                <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#007AFF"/>
-                                    <stop offset="100%" stop-color="#5856D6"/>
+                                <linearGradient id="logoGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#FF6B6B"/>
+                                    <stop offset="100%" stop-color="#FF8E53"/>
+                                </linearGradient>
+                                <linearGradient id="logoGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#4ECDC4"/>
+                                    <stop offset="100%" stop-color="#44A08D"/>
+                                </linearGradient>
+                                <linearGradient id="logoGradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#A8E6CF"/>
+                                    <stop offset="100%" stop-color="#88D8A3"/>
                                 </linearGradient>
                             </defs>
                         </svg>
@@ -59,7 +67,10 @@
                 <div class="float-element float-1"></div>
                 <div class="float-element float-2"></div>
                 <div class="float-element float-3"></div>
+                <div class="float-element float-4"></div>
+                <div class="float-element float-5"></div>
             </div>
+            <div class="particle-system" id="particleSystem"></div>
         </div>
         
         <div class="hero-container">
@@ -67,21 +78,23 @@
                 <div class="hero-badge">
                     <span class="badge-icon">✨</span>
                     <span>Powered by Advanced AI</span>
+                    <div class="badge-glow"></div>
                 </div>
                 
                 <h1 class="hero-title">
-                    Professional Chart Analysis
-                    <span class="title-highlight">Powered by AI</span>
+                    <span class="title-line">Never Analyze Charts</span>
+                    <span class="title-line">Wrong Again</span>
+                    <span class="title-subtitle">There's an AI for that.</span>
                 </h1>
                 
                 <p class="hero-description">
-                    Transform your trading charts into actionable insights with our advanced AI. 
-                    Get professional-grade analysis in seconds, not hours.
+                    Try ChartMaster free for 7 days
                 </p>
                 
                 <div class="hero-actions">
                     <a href="/register" class="hero-cta primary">
                         <span>Start Free Trial</span>
+                        <div class="cta-glow"></div>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
                         </svg>
@@ -96,64 +109,122 @@
                 
                 <div class="hero-stats">
                     <div class="stat-item">
-                        <div class="stat-number">98.5%</div>
-                        <div class="stat-label">Accuracy</div>
+                        <div class="stat-number" data-target="98.5">0</div>
+                        <div class="stat-label">% Accuracy</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">< 30s</div>
-                        <div class="stat-label">Analysis Time</div>
+                        <div class="stat-number" data-target="30">0</div>
+                        <div class="stat-label">Sec Analysis</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">50k+</div>
-                        <div class="stat-label">Traders</div>
+                        <div class="stat-number" data-target="50">0</div>
+                        <div class="stat-label">K+ Traders</div>
                     </div>
                 </div>
             </div>
             
             <div class="hero-visual">
                 <div class="demo-container-hero">
-                    <div class="demo-window">
+                    <div class="demo-window glass-morphism">
                         <div class="window-header">
                             <div class="window-controls">
                                 <div class="control red"></div>
                                 <div class="control yellow"></div>
                                 <div class="control green"></div>
                             </div>
-                            <div class="window-title">Chart Analysis</div>
+                            <div class="window-title">AI Chart Analysis</div>
+                            <div class="window-badge">LIVE</div>
                         </div>
-                        <div class="window-content" id="demoContent">
-                            <div class="upload-state" id="uploadState">
-                                <div class="upload-icon-animated">
-                                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
-                                        <polyline points="17 8 12 3 7 8"/>
-                                        <line x1="12" y1="3" x2="12" y2="15"/>
-                                    </svg>
-                                </div>
-                                <h3>Drop Chart Here</h3>
-                                <p>AI analysis in seconds</p>
+                        <div class="window-content" id="heroDemo">
+                            <!-- Dynamic content will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Free Chart Analysis Demo Section -->
+    <section class="demo-section glass-section" id="demo">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <span class="badge-icon">🚀</span>
+                    <span>Free Chart Analysis Demo</span>
+                </div>
+                <h2 class="section-title">Experience AI-Powered Analysis</h2>
+                <p class="section-subtitle">Upload any trading chart and get instant professional analysis</p>
+            </div>
+            
+            <div class="demo-content">
+                <div class="demo-text">
+                    <div class="demo-features">
+                        <div class="demo-feature glass-morphism">
+                            <div class="demo-feature-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                                </svg>
                             </div>
-                            
-                            <div class="analysis-preview" id="analysisPreview" style="display: none;">
-                                <div class="analysis-header">
-                                    <div class="sentiment-indicator bullish">
-                                        <div class="sentiment-icon">📈</div>
-                                        <div class="sentiment-text">BULLISH</div>
-                                        <div class="confidence-score">87%</div>
+                            <div class="demo-feature-text">
+                                <h4>Instant Analysis</h4>
+                                <p>Results in under 30 seconds</p>
+                            </div>
+                        </div>
+                        <div class="demo-feature glass-morphism">
+                            <div class="demo-feature-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="3"/>
+                                    <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"/>
+                                </svg>
+                            </div>
+                            <div class="demo-feature-text">
+                                <h4>Precise Insights</h4>
+                                <p>Entry, stop-loss, and target levels</p>
+                            </div>
+                        </div>
+                        <div class="demo-feature glass-morphism">
+                            <div class="demo-feature-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <polyline points="14 2 14 8 20 8"/>
+                                </svg>
+                            </div>
+                            <div class="demo-feature-text">
+                                <h4>Multiple Formats</h4>
+                                <p>PNG, JPG, TradingView exports</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="demo-interactive">
+                    <div class="demo-panel glass-morphism">
+                        <div class="demo-header">
+                            <h3>Live Demo</h3>
+                            <div class="demo-counter">
+                                <div class="counter-icon">🔥</div>
+                                <span id="demoScansRemaining">2</span> free scans remaining
+                            </div>
+                        </div>
+                        
+                        <div class="demo-interface" id="demoInterface">
+                            <div class="upload-zone glass-morphism" onclick="document.getElementById('demoChartInput').click()">
+                                <input type="file" id="demoChartInput" accept="image/*" style="display: none;" onchange="handleDemoChartUpload(event)">
+                                <div class="upload-content">
+                                    <div class="upload-icon-large">
+                                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                                            <polyline points="17 8 12 3 7 8"/>
+                                            <line x1="12" y1="3" x2="12" y2="15"/>
+                                        </svg>
+                                        <div class="upload-pulse"></div>
                                     </div>
-                                </div>
-                                <div class="analysis-content">
-                                    <div class="insight-item">
-                                        <span class="insight-label">Pattern:</span>
-                                        <span class="insight-value">Ascending Triangle</span>
-                                    </div>
-                                    <div class="insight-item">
-                                        <span class="insight-label">Support:</span>
-                                        <span class="insight-value">$64,200</span>
-                                    </div>
-                                    <div class="insight-item">
-                                        <span class="insight-label">Target:</span>
-                                        <span class="insight-value">$68,500</span>
+                                    <h3>Drop Chart Here</h3>
+                                    <p>or click to browse</p>
+                                    <div class="supported-formats">
+                                        <span class="format-badge">PNG</span>
+                                        <span class="format-badge">JPG</span>
+                                        <span class="format-badge">TradingView</span>
                                     </div>
                                 </div>
                             </div>
@@ -165,15 +236,19 @@
     </section>
 
     <!-- Features Section -->
-    <section class="features-section" id="features">
+    <section class="features-section glass-section" id="features">
         <div class="section-container">
             <div class="section-header">
+                <div class="section-badge">
+                    <span class="badge-icon">⚡</span>
+                    <span>Powerful Features</span>
+                </div>
                 <h2 class="section-title">Why Choose ChartMaster AI</h2>
                 <p class="section-subtitle">Professional-grade analysis tools designed for modern traders</p>
             </div>
             
             <div class="features-grid">
-                <div class="feature-card glass-card">
+                <div class="feature-card glass-morphism">
                     <div class="feature-icon">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
@@ -183,7 +258,7 @@
                     <p class="feature-description">Advanced machine learning algorithms analyze patterns, trends, and market sentiment with 98.5% accuracy.</p>
                 </div>
                 
-                <div class="feature-card glass-card">
+                <div class="feature-card glass-morphism">
                     <div class="feature-icon">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="12" cy="12" r="10"/>
@@ -194,7 +269,7 @@
                     <p class="feature-description">Get comprehensive analysis in under 30 seconds. No more waiting hours for professional insights.</p>
                 </div>
                 
-                <div class="feature-card glass-card">
+                <div class="feature-card glass-morphism">
                     <div class="feature-icon">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M9 12l2 2 4-4"/>
@@ -208,7 +283,7 @@
                     <p class="feature-description">Technical analysis, price action, Elliott Wave, Fibonacci - choose from 12+ analysis styles.</p>
                 </div>
                 
-                <div class="feature-card glass-card">
+                <div class="feature-card glass-morphism">
                     <div class="feature-icon">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
@@ -220,7 +295,7 @@
                     <p class="feature-description">Smart money flow, order blocks, volume profile - institutional-grade analysis tools.</p>
                 </div>
                 
-                <div class="feature-card glass-card">
+                <div class="feature-card glass-morphism">
                     <div class="feature-icon">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
@@ -233,7 +308,7 @@
                     <p class="feature-description">Join thousands of professional traders who rely on ChartMaster AI for their daily analysis.</p>
                 </div>
                 
-                <div class="feature-card glass-card">
+                <div class="feature-card glass-morphism">
                     <div class="feature-icon">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
@@ -248,136 +323,28 @@
         </div>
     </section>
 
-    <!-- Demo Section -->
-    <section class="demo-section" id="demo">
-        <div class="section-container">
-            <div class="demo-content">
-                <div class="demo-text">
-                    <h2 class="section-title">See It In Action</h2>
-                    <p class="section-subtitle">Upload any trading chart and get instant AI analysis</p>
-                    
-                    <div class="demo-features">
-                        <div class="demo-feature">
-                            <div class="demo-feature-icon">⚡</div>
-                            <div class="demo-feature-text">
-                                <h4>Instant Analysis</h4>
-                                <p>Results in under 30 seconds</p>
-                            </div>
-                        </div>
-                        <div class="demo-feature">
-                            <div class="demo-feature-icon">🎯</div>
-                            <div class="demo-feature-text">
-                                <h4>Precise Insights</h4>
-                                <p>Entry, stop-loss, and target levels</p>
-                            </div>
-                        </div>
-                        <div class="demo-feature">
-                            <div class="demo-feature-icon">📊</div>
-                            <div class="demo-feature-text">
-                                <h4>Multiple Formats</h4>
-                                <p>PNG, JPG, TradingView exports</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <a href="/register" class="demo-cta">Try It Free</a>
-                </div>
-                
-                <div class="demo-interactive">
-                    <div class="demo-panel glass-card">
-                        <div class="demo-header">
-                            <h3>Live Demo</h3>
-                            <div class="demo-counter">
-                                <span id="demoScansRemaining">2</span> free scans remaining
-                            </div>
-                        </div>
-                        
-                        <div class="demo-interface" id="demoInterface">
-                            <div class="upload-zone" onclick="document.getElementById('demoChartInput').click()">
-                                <input type="file" id="demoChartInput" accept="image/*" style="display: none;" onchange="handleDemoChartUpload(event)">
-                                <div class="upload-content">
-                                    <div class="upload-icon-large">📊</div>
-                                    <h3>Drop Chart Here</h3>
-                                    <p>or click to browse</p>
-                                    <div class="supported-formats">
-                                        <span>PNG</span>
-                                        <span>JPG</span>
-                                        <span>TradingView</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="demo-loading" id="demoLoading" style="display: none;">
-                                <div class="loading-animation">
-                                    <div class="loading-spinner"></div>
-                                    <div class="loading-brain">🧠</div>
-                                </div>
-                                <h3>Analyzing Chart...</h3>
-                                <p id="loadingMessage">Detecting patterns...</p>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" id="progressFill"></div>
-                                </div>
-                            </div>
-                            
-                            <div class="demo-results" id="demoResults" style="display: none;">
-                                <div class="results-header">
-                                    <div class="sentiment-badge bullish">
-                                        <span class="sentiment-icon">📈</span>
-                                        <span class="sentiment-text">BULLISH</span>
-                                        <span class="confidence">87%</span>
-                                    </div>
-                                    <button class="new-analysis-btn" onclick="resetDemo()">New Analysis</button>
-                                </div>
-                                
-                                <div class="results-content">
-                                    <div class="result-item">
-                                        <span class="result-label">Pattern Detected:</span>
-                                        <span class="result-value">Ascending Triangle</span>
-                                    </div>
-                                    <div class="result-item">
-                                        <span class="result-label">Support Level:</span>
-                                        <span class="result-value">$64,200</span>
-                                    </div>
-                                    <div class="result-item">
-                                        <span class="result-label">Target Price:</span>
-                                        <span class="result-value">$68,500</span>
-                                    </div>
-                                    <div class="result-item">
-                                        <span class="result-label">Risk/Reward:</span>
-                                        <span class="result-value">1:3.2</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="results-actions">
-                                    <button class="result-action primary">Get Full Analysis</button>
-                                    <button class="result-action secondary">Export PDF</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Pricing Section -->
-    <section class="pricing-section" id="pricing">
+    <section class="pricing-section glass-section" id="pricing">
         <div class="section-container">
             <div class="section-header">
+                <div class="section-badge">
+                    <span class="badge-icon">💎</span>
+                    <span>Simple Pricing</span>
+                </div>
                 <h2 class="section-title">Choose Your Plan</h2>
-                <p class="section-subtitle">Start with a 3-day free trial, no credit card required</p>
+                <p class="section-subtitle">Start with a 7-day free trial, no credit card required</p>
             </div>
             
             <div class="pricing-toggle">
                 <span class="toggle-label">Monthly</span>
-                <div class="toggle-switch" onclick="togglePricing()">
+                <div class="toggle-switch glass-morphism" onclick="togglePricing()">
                     <div class="toggle-knob"></div>
                 </div>
                 <span class="toggle-label">Yearly <span class="save-badge">Save 20%</span></span>
             </div>
             
             <div class="pricing-grid">
-                <div class="pricing-card glass-card">
+                <div class="pricing-card glass-morphism">
                     <div class="plan-header">
                         <h3 class="plan-name">Starter</h3>
                         <p class="plan-description">Perfect for individual traders</p>
@@ -412,10 +379,13 @@
                             <span>Email support</span>
                         </div>
                     </div>
-                    <a href="/register?plan=starter" class="plan-cta">Start Free Trial</a>
+                    <a href="/register?plan=starter" class="plan-cta">
+                        <span>Start Free Trial</span>
+                        <div class="cta-glow"></div>
+                    </a>
                 </div>
                 
-                <div class="pricing-card glass-card featured">
+                <div class="pricing-card glass-morphism featured">
                     <div class="popular-badge">Most Popular</div>
                     <div class="plan-header">
                         <h3 class="plan-name">Professional</h3>
@@ -457,10 +427,13 @@
                             <span>Priority support</span>
                         </div>
                     </div>
-                    <a href="/register?plan=professional" class="plan-cta">Start Free Trial</a>
+                    <a href="/register?plan=professional" class="plan-cta">
+                        <span>Start Free Trial</span>
+                        <div class="cta-glow"></div>
+                    </a>
                 </div>
                 
-                <div class="pricing-card glass-card">
+                <div class="pricing-card glass-morphism">
                     <div class="plan-header">
                         <h3 class="plan-name">Enterprise</h3>
                         <p class="plan-description">For teams and institutions</p>
@@ -494,12 +467,14 @@
                             <span>SLA guarantee</span>
                         </div>
                     </div>
-                    <a href="mailto:enterprise@chartmaster.ai" class="plan-cta secondary">Contact Sales</a>
+                    <a href="mailto:enterprise@chartmaster.ai" class="plan-cta secondary">
+                        <span>Contact Sales</span>
+                    </a>
                 </div>
             </div>
             
             <div class="pricing-footer">
-                <p>All plans include a 3-day free trial. No credit card required.</p>
+                <p>All plans include a 7-day free trial. No credit card required.</p>
                 <div class="trust-indicators">
                     <div class="trust-item">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -528,9 +503,10 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-section">
+    <section class="cta-section glass-section">
         <div class="cta-background">
             <div class="cta-gradient"></div>
+            <div class="cta-particles"></div>
         </div>
         <div class="section-container">
             <div class="cta-content">
@@ -539,6 +515,7 @@
                 <div class="cta-actions">
                     <a href="/register" class="cta-button primary">
                         <span>Start Free Trial</span>
+                        <div class="cta-glow"></div>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
                         </svg>
@@ -549,26 +526,35 @@
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M9 12l2 2 4-4"/>
                     </svg>
-                    <span>No credit card required • 3-day free trial • Cancel anytime</span>
+                    <span>No credit card required • 7-day free trial • Cancel anytime</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer glass-section">
         <div class="footer-container">
             <div class="footer-content">
                 <div class="footer-brand">
                     <div class="logo-container">
                         <div class="logo-icon">
                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-                                <path d="M3 3v18h18" stroke="url(#footerLogoGradient)" stroke-width="2" stroke-linecap="round"/>
-                                <path d="M7 14l4-4 4 4 4-4" stroke="url(#footerLogoGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <rect x="3" y="10" width="4" height="11" rx="1" fill="url(#footerGradient1)"/>
+                                <rect x="10" y="3" width="4" height="18" rx="1" fill="url(#footerGradient2)"/>
+                                <rect x="17" y="7" width="4" height="14" rx="1" fill="url(#footerGradient3)"/>
                                 <defs>
-                                    <linearGradient id="footerLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" stop-color="#007AFF"/>
-                                        <stop offset="100%" stop-color="#5856D6"/>
+                                    <linearGradient id="footerGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#FF6B6B"/>
+                                        <stop offset="100%" stop-color="#FF8E53"/>
+                                    </linearGradient>
+                                    <linearGradient id="footerGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#4ECDC4"/>
+                                        <stop offset="100%" stop-color="#44A08D"/>
+                                    </linearGradient>
+                                    <linearGradient id="footerGradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#A8E6CF"/>
+                                        <stop offset="100%" stop-color="#88D8A3"/>
                                     </linearGradient>
                                 </defs>
                             </svg>
@@ -616,19 +602,19 @@
                     <p>&copy; 2024 ChartMaster AI. All rights reserved.</p>
                 </div>
                 <div class="footer-social">
-                    <a href="#" class="social-link">
+                    <a href="#" class="social-link glass-morphism">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
                         </svg>
                     </a>
-                    <a href="#" class="social-link">
+                    <a href="#" class="social-link glass-morphism">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/>
                             <rect x="2" y="9" width="4" height="12"/>
                             <circle cx="4" cy="4" r="2"/>
                         </svg>
                     </a>
-                    <a href="#" class="social-link">
+                    <a href="#" class="social-link glass-morphism">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/>
                         </svg>
